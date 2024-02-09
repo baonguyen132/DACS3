@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "496017160108",
+    "project_id": "baebase-f1bb1",
+    "storage_bucket": "baebase-f1bb1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:496017160108:android:10f0c0e8721f8bcc496c09",
+        "android_client_info": {
+          "package_name": "com.example.bae"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwanzVaaxYAqwK9JB_FHuHTDNS5BEbUgo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
