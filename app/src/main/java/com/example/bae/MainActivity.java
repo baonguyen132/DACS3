@@ -1,6 +1,5 @@
 package com.example.bae;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -8,61 +7,47 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 
-
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
 
 
+import com.example.bae.Interface.getUserAuth;
 import com.example.bae.Interface.replaceFragement;
-import com.example.bae.ui.Login_SignUp.SignUpActivity;
-import com.example.bae.ui.Sub.SubFragment;
 import com.example.bae.ui.home.HomeFragment;
-import com.example.bae.ui.Login_SignUp.LoginActivity;
 
+import com.example.bae.ui.include.menu.menu_bottom.MenuBottom;
+import com.example.bae.ui.include.menu.menu_navigation.Navigation;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity  implements replaceFragement  {
+public class MainActivity extends AppCompatActivity implements replaceFragement, getUserAuth {
 
 
-    DrawerLayout drawerLayout ;
 
-    NavigationView navigationView ;
-    Menu menu ;
-
-    FirebaseAuth firebaseAuth ;
+    private Navigation navigation ;
+    private MenuBottom menuBottom ;
+    private FirebaseUser user ;
+    private DrawerLayout drawerLayout ;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.user = getUserAuth() ;
 
-        firebaseAuth = FirebaseAuth.getInstance() ;
+        navigation = new Navigation(getSupportFragmentManager() , this  , user) ;
+        menuBottom = new MenuBottom(getSupportFragmentManager(), this , user );
 
-        FirebaseUser user = firebaseAuth.getCurrentUser() ;
+        //==== Thiết lập biến ====//
 
-
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView= findViewById(R.id.nav_view) ;
-        menu = navigationView.getMenu() ;
-
-        if(user != null){
-            Toast.makeText(getApplicationContext() , user.getEmail().toString() , Toast.LENGTH_LONG).show();
-            menu.add(R.id.group_login_and_sign_up , 1 , 0 , "Logout");
-        }
-        else {
-            menu.add(R.id.group_login_and_sign_up , 2 , 0 , "Login");
-            menu.add(R.id.group_login_and_sign_up , 3 , 0 , "Sign up");
-
-        }
-
-
-        navigationView.bringToFront();
-
+        this.drawerLayout = navigation.getDrawerLayout() ;
+        
+        
         Toolbar toolbar = findViewById(R.id.toolbar) ;
         setSupportActionBar(toolbar);
 
@@ -70,39 +55,15 @@ public class MainActivity extends AppCompatActivity  implements replaceFragement
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        if(savedInstanceState == null){
-            replaceFragement(new HomeFragment() , getSupportFragmentManager());
-            navigationView.setCheckedItem(R.id.nav_home);
-        }
         replaceFragement(new HomeFragment() , getSupportFragmentManager());
 
+        navigation.createView();
+        navigation.action();
+
+        menuBottom.createView();
+        menuBottom.action();
 
 
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int i = item.getItemId() ;
-                if(i == R.id.nav_settings){
-                    replaceFragement(new SubFragment() , getSupportFragmentManager());
-                }
-                else if (i == 1) {
-                    FirebaseAuth.getInstance().signOut();
-                    finish();
-                    startActivity(new Intent(getApplicationContext() , LoginActivity.class));
-                }
-                else if (i == 2) {
-                    finish();
-                    startActivity(new Intent(getApplicationContext() , LoginActivity.class));
-                }
-                else if (i == 3) {
-                    finish();
-                    startActivity(new Intent(getApplicationContext() , SignUpActivity.class));
-                }
-                Log.d("ssss" , (i + "-" + item));
-                drawerLayout.closeDrawer(GravityCompat.START);
-                return true;
-            }
-        });
 
     }
 

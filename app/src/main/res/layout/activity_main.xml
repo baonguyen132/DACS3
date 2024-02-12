@@ -31,11 +31,15 @@
 
     </LinearLayout>
 
+
     <com.google.android.material.navigation.NavigationView
+
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/nav_view"
         android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+
 
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/nav_menu"
@@ -43,14 +47,5 @@
         app:itemTextColor="@color/lavender"/>
 
 
-    <fragment
-        android:id="@+id/export_menu_bottom"
-        class="com.example.bae.ui.include.menu_bottom.MenuBottomFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:layout="@layout/include_menu_bottom"
-        >
-
-    </fragment>
-
+    <include layout="@layout/include_menu_bottom" />
 </androidx.drawerlayout.widget.DrawerLayout>
