@@ -1,25 +1,21 @@
 package com.example.bae.ui.include.menu.menu_navigation;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.bae.Interface.replaceFragement;
 import com.example.bae.R;
-import com.example.bae.data.UserData;
-import com.example.bae.data.UserRequest;
+import com.example.bae.data.User.UserRequest;
 import com.example.bae.ui.Login_SignUp.LoginActivity;
 import com.example.bae.ui.Login_SignUp.SignUpActivity;
 import com.example.bae.ui.Sub.SubFragment;
@@ -38,12 +34,12 @@ public class Navigation extends MenuCustome implements replaceFragement {
 
     TextView nav_header_t_fullname , nav_view_t_header ;
 
-    public Navigation( FragmentManager fragmentManager ,  Activity activity   , FirebaseUser user){
+    public Navigation( FragmentManager fragmentManager ,  Activity activity   , FirebaseUser user , DrawerLayout drawerLayout){
         super(fragmentManager , user , activity);
         this.activity = activity ;
 
         this.navigationView =  activity.findViewById(R.id.nav_view) ;
-        this.drawerLayout = activity.findViewById(R.id.drawer_layout);
+        this.drawerLayout = drawerLayout;
 
 
         View headerView = navigationView.getHeaderView(0) ;
@@ -63,8 +59,11 @@ public class Navigation extends MenuCustome implements replaceFragement {
             request.ResponseData(user.getEmail(), new UserRequest.HandleRespone() {
                 @Override
                 public void handleRespone(JSONObject response) throws JSONException {
-                    nav_header_t_fullname.setText(response.getString("name"));
-                    nav_view_t_header.setText(response.getString("email"));
+
+                    JSONObject jsonObject = response.getJSONObject("data");
+
+                    nav_header_t_fullname.setText(jsonObject.getString("name"));
+                    nav_view_t_header.setText(jsonObject.getString("email"));
 
                 }
             });
@@ -109,7 +108,5 @@ public class Navigation extends MenuCustome implements replaceFragement {
         });
     }
 
-    public DrawerLayout getDrawerLayout() {
-        return drawerLayout;
-    }
+
 }

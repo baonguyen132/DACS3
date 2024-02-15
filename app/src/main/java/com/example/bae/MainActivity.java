@@ -17,6 +17,7 @@ import com.example.bae.Interface.getUserAuth;
 import com.example.bae.Interface.replaceFragement;
 import com.example.bae.ui.home.HomeFragment;
 
+import com.example.bae.ui.include.menu.MenuCustome;
 import com.example.bae.ui.include.menu.menu_bottom.MenuBottom;
 import com.example.bae.ui.include.menu.menu_navigation.Navigation;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -29,8 +30,7 @@ public class MainActivity extends AppCompatActivity implements replaceFragement,
 
 
 
-    private Navigation navigation ;
-    private MenuBottom menuBottom ;
+    private MenuCustome navigation, menuBottom ;
     private FirebaseUser user ;
     private DrawerLayout drawerLayout ;
     @SuppressLint("MissingInflatedId")
@@ -38,16 +38,14 @@ public class MainActivity extends AppCompatActivity implements replaceFragement,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //==== Thiết lập biến ====//
         this.user = getUserAuth() ;
-
-        navigation = new Navigation(getSupportFragmentManager() , this  , user) ;
+        this.drawerLayout = findViewById(R.id.drawer_layout) ;
+        //==== Tạo ====//
+        navigation = new Navigation(getSupportFragmentManager() , this  , user , drawerLayout) ;
         menuBottom = new MenuBottom(getSupportFragmentManager(), this , user );
 
-        //==== Thiết lập biến ====//
 
-        this.drawerLayout = navigation.getDrawerLayout() ;
-        
-        
         Toolbar toolbar = findViewById(R.id.toolbar) ;
         setSupportActionBar(toolbar);
 

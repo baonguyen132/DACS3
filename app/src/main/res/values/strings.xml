@@ -4,4 +4,8 @@
     <string name="close_nav">Close Naviagation Drawer</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="loign_succeful">Đăng nhập thành công</string>
+    <string name="loign_fail">Tài khoản này chưa được đăng kí</string>
+
 </resources>

@@ -1,13 +1,16 @@
-package com.example.bae.data;
+package com.example.bae.data.User;
 
-public class UserData {
+import android.content.Context;
+
+public class UserData extends UserRequest{
     String  id , name, cccd , dob, gender, pob , address ;
     int status , point ;
 
-    public UserData(){
-
+    public UserData(Context context){
+        super(context);
     }
-    public UserData(String id , String name , String cccd , String dob , String gender , String pob , String address , int status , int point){
+    public UserData(String id , String name , String cccd , String dob , String gender , String pob , String address , int status , int point , Context context ) {
+        super(context);
         this.id = id ;
         this.name = name ;
         this.cccd = cccd ;
@@ -91,4 +94,7 @@ public class UserData {
     public String getPob() {
         return pob;
     }
+
+
+
 }
