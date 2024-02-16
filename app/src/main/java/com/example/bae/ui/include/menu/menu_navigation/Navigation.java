@@ -56,9 +56,9 @@ public class Navigation extends MenuCustome implements replaceFragement {
         Menu menu = navigationView.getMenu() ;
         if(user != null){
             UserRequest request = new UserRequest(context) ;
-            request.ResponseData(user.getEmail(), new UserRequest.HandleRespone() {
+            request.ResponseData(user.getEmail(), new UserRequest.HandleResponeJSON() {
                 @Override
-                public void handleRespone(JSONObject response) throws JSONException {
+                public void handleResponeJSON(JSONObject response) throws JSONException {
 
                     JSONObject jsonObject = response.getJSONObject("data");
 

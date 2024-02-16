@@ -64,6 +64,8 @@ dependencies {
     implementation("com.android.volley:volley:1.2.1")
     implementation("androidx.privacysandbox.tools:tools-core:1.0.0-alpha06")
 
+    implementation("androidx.biometric:biometric:1.1.0")
+
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
 
     testImplementation("junit:junit:4.13.2")

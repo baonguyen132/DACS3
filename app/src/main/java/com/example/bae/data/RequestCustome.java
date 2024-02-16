@@ -4,7 +4,7 @@ import android.content.Context;
 
 public abstract class RequestCustome {
     protected Context context ;
-    protected String url = "https://9803-14-233-118-150.ngrok-free.app/APIDACS3/public/api/" ;
+    protected String url = "https://60df-183-80-65-91.ngrok-free.app/APIDACS3/public/api/" ;
 
 
     public RequestCustome(Context context){

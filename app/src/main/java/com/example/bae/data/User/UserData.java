@@ -2,14 +2,21 @@ package com.example.bae.data.User;
 
 import android.content.Context;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+
+import java.util.Map;
+
 public class UserData extends UserRequest{
-    String  id , name, cccd , dob, gender, pob , address ;
+    String  id , name, cccd , dob, gender, pob , address , email ;
     int status , point ;
 
     public UserData(Context context){
         super(context);
     }
-    public UserData(String id , String name , String cccd , String dob , String gender , String pob , String address , int status , int point , Context context ) {
+    public UserData(String id , String email , String name , String cccd , String dob , String gender , String pob , String address , int status , int point , Context context ) {
         super(context);
         this.id = id ;
         this.name = name ;
@@ -20,6 +27,7 @@ public class UserData extends UserRequest{
         this.address = address ;
         this.status = status ;
         this.point = point ;
+        this.email = email ;
 
     }
 
@@ -95,6 +103,29 @@ public class UserData extends UserRequest{
         return pob;
     }
 
+    public String getEmail() {
+        return email;
+    }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void checkAccount(String email, String password , UserRequest.HandleResponeString handle){
+        RequestQueue requestQueue = Volley.newRequestQueue(context) ;
+
+        RequestData("auth/checkUser", new HandleRequest() {
+            @Override
+            public void hanldeRequest(String respone) throws JSONException {
+                handle.handleResponeString(respone);
+            }
+        }, new setParams() {
+            @Override
+            public void setParams(Map<String, String> params) {
+                params.put("email" , email.toString().trim() );
+                params.put("password" , password.toString().trim());
+            }
+        });
+    }
 
 }

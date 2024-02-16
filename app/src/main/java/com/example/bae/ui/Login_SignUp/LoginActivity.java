@@ -2,9 +2,13 @@ package com.example.bae.ui.Login_SignUp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricManager;
+import androidx.biometric.BiometricPrompt;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CancellationSignal;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.bae.MainActivity;
 import com.example.bae.R;
+import com.example.bae.data.User.UserData;
 import com.example.bae.data.User.UserRequest;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -20,7 +25,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -35,7 +39,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         email = findViewById(R.id.et_login_email);
         password = findViewById(R.id.et_login_password);
-        signUp = findViewById(R.id.btn_signUp);
+        signUp = findViewById(R.id.btn_login_signIn);
+
+
         mAuth = FirebaseAuth.getInstance() ;
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,16 +49,16 @@ public class LoginActivity extends AppCompatActivity {
                 String textEmail = email.getText().toString() ;
                 String textPassword = password.getText().toString();
 
-                UserRequest request = new UserRequest(getApplicationContext());
+                UserData userData = new UserData(getApplicationContext());
 
                 mAuth.signInWithEmailAndPassword(textEmail , textPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            request.checkAccount(textEmail, textPassword ,new UserRequest.HandleRespone() {
+                            userData.checkAccount(textEmail, textPassword, new UserRequest.HandleResponeString() {
                                 @Override
-                                public void handleRespone(JSONObject response) throws JSONException {
-                                    int status = response.getInt("status") ;
+                                public void handleResponeString(String response) throws JSONException {
+                                    int status = Integer.parseInt(response) ;
                                     if(status == 1){
                                         loginSuceessful();
                                     }
@@ -66,11 +72,10 @@ public class LoginActivity extends AppCompatActivity {
                             });
                         }
                         else {
-
-                            request.checkAccount(textEmail, textPassword, new UserRequest.HandleRespone() {
+                            userData.checkAccount(textEmail, textPassword, new UserRequest.HandleResponeString() {
                                 @Override
-                                public void handleRespone(JSONObject response) throws JSONException {
-                                    int status = response.getInt("status") ;
+                                public void handleResponeString(String response) throws JSONException {
+                                    int status = Integer.parseInt(response) ;
                                     if(status == 1){
                                         createAuth(textEmail , textPassword);
                                     }

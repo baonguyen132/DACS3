@@ -27,10 +27,9 @@ public class UserRequest extends RequestCustome {
 
     public UserRequest(Context context) {
         super(context);
-
     }
 
-    public void ResponseData(String email , UserRequest.HandleRespone handle) {
+    public void ResponseData(String email , UserRequest.HandleResponeJSON handle) {
 
         RequestQueue requestQueue = Volley.newRequestQueue(context) ;
         JsonObjectRequest requestUserData = new JsonObjectRequest(Request.Method.GET, url + "auth/email=" + email, null, new Response.Listener<JSONObject>() {
@@ -38,7 +37,7 @@ public class UserRequest extends RequestCustome {
             public void onResponse(JSONObject response) {
 
                 try {
-                    handle.handleRespone(response);
+                    handle.handleResponeJSON(response);
                 } catch (JSONException e) {
 
                     throw new RuntimeException(e);
@@ -56,32 +55,7 @@ public class UserRequest extends RequestCustome {
         requestQueue.add(requestUserData);
 
     }
-    public void checkAccount(String email, String password , UserRequest.HandleRespone handle) {
 
-        RequestQueue requestQueue = Volley.newRequestQueue(context) ;
-        JsonObjectRequest requestUserData = new JsonObjectRequest(Request.Method.GET, url + "auth/emails=" + email + "==passwords="  + password , null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-
-                try {
-                    handle.handleRespone(response);
-                } catch (JSONException e) {
-
-                    throw new RuntimeException(e);
-                }
-
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.d("error" , error.toString());
-            }
-        });
-
-        requestQueue.add(requestUserData);
-
-    }
 
 
     public void RequestData(String urlAdd , UserRequest.HandleRequest handleRequest , UserRequest.setParams userSetParams) {
@@ -89,7 +63,11 @@ public class UserRequest extends RequestCustome {
         StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.POST, url+urlAdd, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                handleRequest.hanldeRequest(response);
+                try {
+                    handleRequest.hanldeRequest(response);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }, new Response.ErrorListener() {
             @Override
@@ -110,12 +88,14 @@ public class UserRequest extends RequestCustome {
 
     }
 
-    public interface HandleRespone{
-        void handleRespone(JSONObject response) throws JSONException;
-
+    public interface HandleResponeJSON{
+        void handleResponeJSON(JSONObject response) throws JSONException;
+    }
+    public interface HandleResponeString{
+        void handleResponeString(String response) throws JSONException;
     }
     public interface HandleRequest{
-        void hanldeRequest(String respone) ;
+        void hanldeRequest(String respone) throws JSONException;
     }
 
     public interface setParams {
