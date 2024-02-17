@@ -11,7 +11,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
+import com.example.bae.Interface.fingerprintAuthentication;
 import com.example.bae.R;
 
 public class HomeFragment extends Fragment {
@@ -21,11 +24,13 @@ public class HomeFragment extends Fragment {
     public static HomeFragment newInstance() {
         return new HomeFragment();
     }
+    private View view ;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        view = inflater.inflate(R.layout.fragment_home, container, false);
+        return view ;
     }
 
     @Override

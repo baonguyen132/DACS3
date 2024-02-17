@@ -8,22 +8,21 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.View;
+import android.widget.Toast;
 
 
 import com.example.bae.Interface.getUserAuth;
 import com.example.bae.Interface.replaceFragement;
+
+import com.example.bae.data.SharedPreferences.DataLocalManager;
 import com.example.bae.ui.home.HomeFragment;
 
 import com.example.bae.ui.include.menu.MenuCustome;
 import com.example.bae.ui.include.menu.menu_bottom.MenuBottom;
 import com.example.bae.ui.include.menu.menu_navigation.Navigation;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
+
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements replaceFragement, getUserAuth {
@@ -38,6 +37,15 @@ public class MainActivity extends AppCompatActivity implements replaceFragement,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(!DataLocalManager.getFirstInstalled()){
+            Toast.makeText(getApplicationContext() , "1" , Toast.LENGTH_LONG).show();
+            DataLocalManager.setFirstInstalled(true);
+        }
+        else {
+            Toast.makeText(getApplicationContext() , "2" , Toast.LENGTH_LONG).show();
+        }
+
         //==== Thiết lập biến ====//
         this.user = getUserAuth() ;
         this.drawerLayout = findViewById(R.id.drawer_layout) ;
@@ -60,8 +68,6 @@ public class MainActivity extends AppCompatActivity implements replaceFragement,
 
         menuBottom.createView();
         menuBottom.action();
-
-
 
     }
 

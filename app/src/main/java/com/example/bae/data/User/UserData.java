@@ -2,9 +2,6 @@ package com.example.bae.data.User;
 
 import android.content.Context;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
-
 import org.json.JSONException;
 
 import java.util.Map;
@@ -112,8 +109,6 @@ public class UserData extends UserRequest{
     }
 
     public void checkAccount(String email, String password , UserRequest.HandleResponeString handle){
-        RequestQueue requestQueue = Volley.newRequestQueue(context) ;
-
         RequestData("auth/checkUser", new HandleRequest() {
             @Override
             public void hanldeRequest(String respone) throws JSONException {
@@ -127,5 +122,6 @@ public class UserData extends UserRequest{
             }
         });
     }
+
 
 }

@@ -42,8 +42,6 @@ public class UserRequest extends RequestCustome {
 
                     throw new RuntimeException(e);
                 }
-
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -55,9 +53,6 @@ public class UserRequest extends RequestCustome {
         requestQueue.add(requestUserData);
 
     }
-
-
-
     public void RequestData(String urlAdd , UserRequest.HandleRequest handleRequest , UserRequest.setParams userSetParams) {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.POST, url+urlAdd, new Response.Listener<String>() {
@@ -87,7 +82,6 @@ public class UserRequest extends RequestCustome {
         requestQueue.add(stringRequest);
 
     }
-
     public interface HandleResponeJSON{
         void handleResponeJSON(JSONObject response) throws JSONException;
     }

@@ -6,7 +6,7 @@ import android.widget.Toast;
 import java.io.Serializable;
 import java.util.Map;
 
-public class Clients extends UserData implements Serializable  {
+public class Clients extends UserData   {
     public Clients(Context context){
         super(context);
     } ;

@@ -2,8 +2,6 @@ package com.example.bae.ui.include.menu.menu_bottom;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
@@ -20,7 +18,6 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.bae.Interface.replaceFragement;
 import com.example.bae.R;
-import com.example.bae.ui.Login_SignUp.LoginActivity;
 import com.example.bae.ui.Sub.SubFragment;
 import com.example.bae.ui.home.HomeFragment;
 import com.example.bae.ui.include.menu.MenuCustome;
@@ -28,7 +25,6 @@ import com.example.bae.ui.shorts.shortsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MenuBottom extends MenuCustome implements replaceFragement {

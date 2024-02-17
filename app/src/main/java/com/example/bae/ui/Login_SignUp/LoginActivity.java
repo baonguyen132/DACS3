@@ -2,13 +2,11 @@ package com.example.bae.ui.Login_SignUp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.biometric.BiometricManager;
-import androidx.biometric.BiometricPrompt;
-import androidx.constraintlayout.widget.ConstraintLayout;
+
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CancellationSignal;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -109,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {
     private void loginSuceessful(){
         Toast.makeText(getApplicationContext() , R.string.loign_succeful , Toast.LENGTH_LONG).show();
         finish();
-        startActivity(new Intent(LoginActivity.this , MainActivity.class));
+        startActivity(new Intent(LoginActivity.this , MainActivity.class ));
     }
 
 
