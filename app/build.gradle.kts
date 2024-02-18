@@ -60,7 +60,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.7.1"))
     implementation("com.google.firebase:firebase-auth")
 
-    implementation("com.google.code.gson:gson:2.8.2")
+    implementation("com.google.code.gson:gson:2.8.6")
     implementation("com.android.volley:volley:1.2.1")
     implementation("androidx.privacysandbox.tools:tools-core:1.0.0-alpha06")
 

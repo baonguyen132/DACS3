@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.bae.Interface.replaceFragement;
 import com.example.bae.R;
+import com.example.bae.data.User.UserData;
 import com.example.bae.ui.Sub.SubFragment;
 import com.example.bae.ui.home.HomeFragment;
 import com.example.bae.ui.include.menu.MenuCustome;
@@ -33,7 +34,7 @@ public class MenuBottom extends MenuCustome implements replaceFragement {
     private BottomNavigationView bottomNavigationView ;
 
 
-    public MenuBottom (FragmentManager fragmentManager , Activity activity , FirebaseUser user ){
+    public MenuBottom (FragmentManager fragmentManager , Activity activity , UserData user ){
         super(fragmentManager , user, activity);
         this.bottomNavigationView = activity.findViewById(R.id.bottomNavigationView);
         this.fab = activity.findViewById(R.id.fab); ;

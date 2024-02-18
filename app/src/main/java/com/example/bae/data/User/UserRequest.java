@@ -29,70 +29,25 @@ public class UserRequest extends RequestCustome {
         super(context);
     }
 
-    public void ResponseData(String email , UserRequest.HandleResponeJSON handle) {
+    public void getDataFromServe(int id , UserRequest.HandleResponeJSON handle){
+        ResponseData("auth/id=" +id , handle);
+    }
 
-        RequestQueue requestQueue = Volley.newRequestQueue(context) ;
-        JsonObjectRequest requestUserData = new JsonObjectRequest(Request.Method.GET, url + "auth/email=" + email, null, new Response.Listener<JSONObject>() {
+    public void checkAccount(String email, String password , UserRequest.HandleResponeString handle){
+        RequestData("auth/checkUser", new HandleRequest() {
             @Override
-            public void onResponse(JSONObject response) {
-
-                try {
-                    handle.handleResponeJSON(response);
-                } catch (JSONException e) {
-
-                    throw new RuntimeException(e);
-                }
+            public void hanldeRequest(String respone) throws JSONException {
+                handle.handleResponeString(respone);
             }
-        }, new Response.ErrorListener() {
+        }, new setParams() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.d("error" , error.toString());
+            public void setParams(Map<String, String> params) {
+                params.put("email" , email.toString().trim() );
+                params.put("password" , password.toString().trim());
             }
         });
-
-        requestQueue.add(requestUserData);
-
-    }
-    public void RequestData(String urlAdd , UserRequest.HandleRequest handleRequest , UserRequest.setParams userSetParams) {
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
-        StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.POST, url+urlAdd, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    handleRequest.hanldeRequest(response);
-                } catch (JSONException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.d("error" , error.toString());
-            }
-        }){
-            @Nullable
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String , String> params = new HashMap<>() ;
-                userSetParams.setParams(params);
-                return params;
-            }
-        };
-
-        requestQueue.add(stringRequest);
-
-    }
-    public interface HandleResponeJSON{
-        void handleResponeJSON(JSONObject response) throws JSONException;
-    }
-    public interface HandleResponeString{
-        void handleResponeString(String response) throws JSONException;
-    }
-    public interface HandleRequest{
-        void hanldeRequest(String respone) throws JSONException;
     }
 
-    public interface setParams {
-        void setParams(Map<String , String> params) ;
-    }
+
+
 }

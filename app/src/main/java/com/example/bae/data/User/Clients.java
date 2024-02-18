@@ -7,34 +7,23 @@ import java.io.Serializable;
 import java.util.Map;
 
 public class Clients extends UserData   {
-    public Clients(Context context){
-        super(context);
+    public Clients(){
+
     } ;
-    public Clients(String id , String email, String name , String cccd , String dob , String gender , String pob , String address , int status , int point , Context context){
-        super(id, email ,name, cccd, dob, gender, pob, address, status, point , context);
+    public Clients(String id , String email, String name , String cccd , String dob , String gender , String pob , String address , int status , int point ){
+        super(id, email ,name, cccd, dob, gender, pob, address, status, point );
     }
 
-    public void sendOtp(String codeOtp){
-        RequestData("auth/sendOtp", new HandleRequest() {
+
+    public void signUp(Context context){
+
+        UserRequest request = new UserRequest(context) ;
+        request.RequestData("auth/signup", new UserRequest.HandleRequest() {
             @Override
             public void hanldeRequest(String respone) {
                 Toast.makeText(context , respone , Toast.LENGTH_LONG).show();
             }
-        }, new setParams() {
-            @Override
-            public void setParams(Map<String, String> params) {
-                params.put("email" , getEmail());
-                params.put("codeOtp" , codeOtp) ;
-            }
-        }) ;
-    }
-    public void signUp(){
-        RequestData("auth/signup", new HandleRequest() {
-            @Override
-            public void hanldeRequest(String respone) {
-                Toast.makeText(context , respone , Toast.LENGTH_LONG).show();
-            }
-        }, new setParams() {
+        }, new UserRequest.setParams() {
             @Override
             public void setParams(Map<String, String> params) {
                 params.put("email" , email) ;

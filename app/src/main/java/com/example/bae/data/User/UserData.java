@@ -1,20 +1,22 @@
 package com.example.bae.data.User;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import org.json.JSONException;
 
+import java.io.Serializable;
 import java.util.Map;
 
-public class UserData extends UserRequest{
+public class UserData implements Serializable {
     String  id , name, cccd , dob, gender, pob , address , email ;
     int status , point ;
 
-    public UserData(Context context){
-        super(context);
+    public UserData(){
+
     }
-    public UserData(String id , String email , String name , String cccd , String dob , String gender , String pob , String address , int status , int point , Context context ) {
-        super(context);
+    public UserData(String id , String email , String name , String cccd , String dob , String gender , String pob , String address , int status , int point ) {
+
         this.id = id ;
         this.name = name ;
         this.cccd = cccd ;
@@ -108,20 +110,25 @@ public class UserData extends UserRequest{
         this.email = email;
     }
 
-    public void checkAccount(String email, String password , UserRequest.HandleResponeString handle){
-        RequestData("auth/checkUser", new HandleRequest() {
+    public void sendOtp(String codeOtp , Context context){
+
+        UserRequest request = new UserRequest(context);
+
+        request.RequestData("auth/sendOtp", new UserRequest.HandleRequest() {
             @Override
-            public void hanldeRequest(String respone) throws JSONException {
-                handle.handleResponeString(respone);
+            public void hanldeRequest(String respone) {
+                Toast.makeText(context , respone , Toast.LENGTH_LONG).show();
             }
-        }, new setParams() {
+        }, new UserRequest.setParams() {
             @Override
             public void setParams(Map<String, String> params) {
-                params.put("email" , email.toString().trim() );
-                params.put("password" , password.toString().trim());
+                params.put("email" , getEmail());
+                params.put("codeOtp" , codeOtp) ;
             }
-        });
+        }) ;
     }
+
+
 
 
 }

@@ -58,7 +58,7 @@ public class SignUpFragment extends Fragment implements replaceFragement {
         scanQR = view.findViewById(R.id.btn_signup_scanQR);
         signUp = view.findViewById(R.id.btn_login_signIn);
 
-        client = new Clients(getActivity().getApplicationContext());
+        client = new Clients();
 
         setEdittextReadOnly(selectDay);
         setEdittextReadOnly(fullname);

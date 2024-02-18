@@ -5,14 +5,15 @@ import android.content.Context;
 
 import androidx.fragment.app.FragmentManager;
 
+import com.example.bae.data.User.UserData;
 import com.google.firebase.auth.FirebaseUser;
 
 public abstract class MenuCustome {
     protected FragmentManager fragmentManager ;
     protected Context context ;
-    protected FirebaseUser user ;
+    protected UserData user ;
     protected Activity activity ;
-    public MenuCustome( FragmentManager fragmentManager , FirebaseUser user , Activity activity ){
+    public MenuCustome( FragmentManager fragmentManager , UserData user , Activity activity ){
         this.fragmentManager = fragmentManager ;
         this.context = activity.getApplicationContext() ;
         this.user = user ;

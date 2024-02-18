@@ -15,6 +15,8 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.bae.Interface.replaceFragement;
 import com.example.bae.R;
+import com.example.bae.data.SharedPreferences.DataLocalManager;
+import com.example.bae.data.User.UserData;
 import com.example.bae.data.User.UserRequest;
 import com.example.bae.ui.Login_SignUp.LoginActivity;
 import com.example.bae.ui.Login_SignUp.SignUpActivity;
@@ -34,7 +36,7 @@ public class Navigation extends MenuCustome implements replaceFragement {
 
     TextView nav_header_t_fullname , nav_view_t_header ;
 
-    public Navigation( FragmentManager fragmentManager ,  Activity activity   , FirebaseUser user , DrawerLayout drawerLayout){
+    public Navigation(FragmentManager fragmentManager , Activity activity , UserData user , DrawerLayout drawerLayout){
         super(fragmentManager , user , activity);
         this.activity = activity ;
 
@@ -55,18 +57,8 @@ public class Navigation extends MenuCustome implements replaceFragement {
 
         Menu menu = navigationView.getMenu() ;
         if(user != null){
-            UserRequest request = new UserRequest(context) ;
-            request.ResponseData(user.getEmail(), new UserRequest.HandleResponeJSON() {
-                @Override
-                public void handleResponeJSON(JSONObject response) throws JSONException {
-
-                    JSONObject jsonObject = response.getJSONObject("data");
-
-                    nav_header_t_fullname.setText(jsonObject.getString("name"));
-                    nav_view_t_header.setText(jsonObject.getString("email"));
-
-                }
-            });
+            nav_header_t_fullname.setText(user.getName());
+            nav_view_t_header.setText(user.getEmail());
 
             menu.add(R.id.group_login_and_sign_up , 1 , 0 , "Logout");
         }
@@ -89,7 +81,10 @@ public class Navigation extends MenuCustome implements replaceFragement {
                     replaceFragement(new SubFragment() ,fragmentManager);
                 }
                 else if (i == 1) {
-                    FirebaseAuth.getInstance().signOut();
+
+                    DataLocalManager.removeUser();
+
+
                     activity.finish();
                     activity.startActivity(new Intent(context, LoginActivity.class));
                 }
@@ -101,7 +96,6 @@ public class Navigation extends MenuCustome implements replaceFragement {
                     activity.finish();
                     activity.startActivity(new Intent(context , SignUpActivity.class));
                 }
-                Log.d("ssss" , (i + "-" + item));
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             }
