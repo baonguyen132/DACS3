@@ -56,6 +56,7 @@ public class LoginActivity extends AppCompatActivity implements fingerprintAuthe
             public void onClick(View v) {
                 String textEmail = email.getText().toString() ;
                 String textPassword = password.getText().toString();
+                saveEmailandPassword(textEmail , textPassword);
                 login(textEmail , textPassword);
             }
         });
@@ -100,9 +101,6 @@ public class LoginActivity extends AppCompatActivity implements fingerprintAuthe
             public void handleResponeString(String response) throws JSONException {
                 int id = Integer.parseInt(response) ;
                 if(id != 0){
-                    if(isFirstLogin()){
-                        saveEmailandPassword(email , password);
-                    }
                     saveDataFromServe(id);
                 }
                 else {
@@ -139,6 +137,7 @@ public class LoginActivity extends AppCompatActivity implements fingerprintAuthe
 
     private void loginSuceessful(){
         Toast.makeText(getApplicationContext() , R.string.loign_succeful , Toast.LENGTH_LONG).show();
+        finish();
         Intent intent = new Intent(LoginActivity.this , MainActivity.class);
         startActivity(intent);
 

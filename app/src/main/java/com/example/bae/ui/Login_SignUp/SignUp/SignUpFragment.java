@@ -31,7 +31,7 @@ public class SignUpFragment extends Fragment implements replaceFragement {
 
     private SignUpViewModel mViewModel;
 
-    private EditText selectDay , fullname , cid , address , email ;
+    private EditText selectDay , fullname , cid , address , email, password ;
     private RadioGroup radioGroupGender ;
     private Button scanQR, signUp;
     private Clients client ;
@@ -54,6 +54,7 @@ public class SignUpFragment extends Fragment implements replaceFragement {
         cid = view.findViewById(R.id.et_signup_cid);
         address = view.findViewById(R.id.et_signup_address);
         email = view.findViewById(R.id.et_signup_email);
+        password = view.findViewById(R.id.et_signup_password);
         radioGroupGender = view.findViewById(R.id.rg_signup_gender);
         scanQR = view.findViewById(R.id.btn_signup_scanQR);
         signUp = view.findViewById(R.id.btn_login_signIn);
@@ -76,6 +77,7 @@ public class SignUpFragment extends Fragment implements replaceFragement {
             public void onClick(View v) {
 
                 client.setEmail(String.valueOf(email.getText()));
+                client.setPassword(String.valueOf(password.getText()));
                 replaceFragement(new CheckCodeOtpFragment(client) , getActivity().getSupportFragmentManager());
             }
         });
@@ -116,7 +118,7 @@ public class SignUpFragment extends Fragment implements replaceFragement {
 
             String[] dob = results[3].split("");
             Log.d("aaa" , Arrays.toString(dob));
-            selectDay.setText(dob[0]+dob[1]+"/" +dob[2]+dob[3]+"/"+dob[4]+dob[5]+dob[6]+dob[7] );
+            selectDay.setText(dob[4]+dob[5]+dob[6]+dob[7]+"/" +dob[2]+dob[3]+"/"+dob[0]+dob[1] );
 
             address.setText(results[5]);
 
@@ -131,7 +133,7 @@ public class SignUpFragment extends Fragment implements replaceFragement {
 
             client.setName(results[2]);
             client.setCccd(results[0]);
-            client.setDob(dob[0]+dob[1]+"/" +dob[2]+dob[3]+"/"+dob[4]+dob[5]+dob[6]+dob[7]);
+            client.setDob(dob[4]+dob[5]+dob[6]+dob[7]+"/" +dob[2]+dob[3]+"/"+dob[0]+dob[1]);
             client.setAddress(results[5]);
 
         }

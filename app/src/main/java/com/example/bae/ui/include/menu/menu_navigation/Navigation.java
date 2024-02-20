@@ -83,8 +83,6 @@ public class Navigation extends MenuCustome implements replaceFragement {
                 else if (i == 1) {
 
                     DataLocalManager.removeUser();
-
-
                     activity.finish();
                     activity.startActivity(new Intent(context, LoginActivity.class));
                 }

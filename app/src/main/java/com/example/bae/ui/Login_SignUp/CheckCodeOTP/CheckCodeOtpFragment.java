@@ -117,7 +117,7 @@ public class CheckCodeOtpFragment extends Fragment  {
             public void onClick(View v) {
                 String codeOTPConfirm = digit1.getText().toString() + digit2.getText().toString() + digit3.getText().toString() +digit4.getText().toString() ;
                 if(code.equals(codeOTPConfirm)){
-                    clients.signUp(getContext());
+                    clients.signUp(getActivity());
                     Toast.makeText(getContext() , "Sucessful" , Toast.LENGTH_LONG).show();
                 }
                 else {
