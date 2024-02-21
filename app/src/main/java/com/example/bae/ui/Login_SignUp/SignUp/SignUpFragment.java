@@ -100,14 +100,7 @@ public class SignUpFragment extends Fragment implements replaceFragement {
     }
 
     private void scanQR(){
-        ScanOptions options = new ScanOptions();
-        options.setDesiredBarcodeFormats(ScanOptions.QR_CODE);
-        options.setPrompt("Hãy quét mã QR trên căn cước công dân") ;
-        options.setCameraId(0) ;
-        options.setBeepEnabled(true) ;
-        options.setOrientationLocked(true) ;
-        options.setCaptureActivity(CaptureActivity.class);
-        barLaucher.launch(options);
+        client.scanQR(barLaucher);
     }
     ActivityResultLauncher<ScanOptions> barLaucher = registerForActivityResult(new ScanContract() , result->{
         if(result.getContents() != null){
@@ -117,7 +110,7 @@ public class SignUpFragment extends Fragment implements replaceFragement {
             cid.setText(results[0]);
 
             String[] dob = results[3].split("");
-            Log.d("aaa" , Arrays.toString(dob));
+
             selectDay.setText(dob[4]+dob[5]+dob[6]+dob[7]+"/" +dob[2]+dob[3]+"/"+dob[0]+dob[1] );
 
             address.setText(results[5]);

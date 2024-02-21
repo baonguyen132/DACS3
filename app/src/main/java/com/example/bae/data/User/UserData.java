@@ -3,7 +3,10 @@ package com.example.bae.data.User;
 import android.content.Context;
 import android.widget.Toast;
 
-import org.json.JSONException;
+import androidx.activity.result.ActivityResultLauncher;
+
+import com.journeyapps.barcodescanner.CaptureActivity;
+import com.journeyapps.barcodescanner.ScanOptions;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -128,6 +131,17 @@ public class UserData implements Serializable {
         }) ;
     }
 
+    public void scanQR(ActivityResultLauncher<ScanOptions> barLauncher){
+        ScanOptions options = new ScanOptions();
+        options.setDesiredBarcodeFormats(ScanOptions.QR_CODE);
+        options.setPrompt("Hãy quét mã QR trên căn cước công dân") ;
+        options.setCameraId(0) ;
+        options.setBeepEnabled(true) ;
+        options.setOrientationLocked(true) ;
+        options.setCaptureActivity(CaptureActivity.class);
+
+        barLauncher.launch(options);
+    }
 
 
 
