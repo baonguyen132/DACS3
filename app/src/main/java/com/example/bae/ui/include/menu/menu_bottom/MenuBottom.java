@@ -19,14 +19,14 @@ import androidx.fragment.app.FragmentManager;
 import com.example.bae.Interface.replaceFragement;
 import com.example.bae.R;
 import com.example.bae.data.User.UserData;
+import com.example.bae.ui.Battery.BatteryFragment;
+import com.example.bae.ui.Battery.CardViewBattery.CardViewBatteryFragment;
 import com.example.bae.ui.Sub.SubFragment;
 import com.example.bae.ui.home.HomeFragment;
 import com.example.bae.ui.include.menu.MenuCustome;
-import com.example.bae.ui.shorts.shortsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.firebase.auth.FirebaseUser;
 
 public class MenuBottom extends MenuCustome implements replaceFragement {
 
@@ -59,8 +59,8 @@ public class MenuBottom extends MenuCustome implements replaceFragement {
                 if(id == R.id.home){
                     replaceFragement(new HomeFragment() , fragmentManager);
                 }
-                else if(id == R.id.shorts){
-                    replaceFragement(new shortsFragment() , fragmentManager);
+                else if(id == R.id.battery){
+                    replaceFragement(new BatteryFragment(), fragmentManager);
                 }
                 else if(id == R.id.subscriptions){
                     replaceFragement(new SubFragment() , fragmentManager);

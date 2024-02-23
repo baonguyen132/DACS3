@@ -1,4 +1,4 @@
-package com.example.bae.ui.shorts;
+package com.example.bae.ui.Battery.CardViewBattery;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -14,24 +14,24 @@ import android.view.ViewGroup;
 
 import com.example.bae.R;
 
-public class shortsFragment extends Fragment {
+public class CardViewBatteryFragment extends Fragment {
 
-    private ShortsViewModel mViewModel;
+    private CardViewBatteryViewModel mViewModel;
 
-    public static shortsFragment newInstance() {
-        return new shortsFragment();
+    public static CardViewBatteryFragment newInstance() {
+        return new CardViewBatteryFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_shorts, container, false);
+        return inflater.inflate(R.layout.fragment_card_view_battery, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ShortsViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(CardViewBatteryViewModel.class);
         // TODO: Use the ViewModel
     }
 
