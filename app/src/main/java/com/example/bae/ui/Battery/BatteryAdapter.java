@@ -1,13 +1,20 @@
 package com.example.bae.ui.Battery;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.bae.R;
 import com.example.bae.data.Battery.BatteryData;
+import com.example.bae.data.Cart.CartData;
+import com.example.bae.data.Cart.CartItemData;
 import com.example.bae.ui.Battery.CardViewBattery.CardViewBatteryFragment;
 
 import java.util.ArrayList;
@@ -23,10 +30,17 @@ public class BatteryAdapter extends BaseAdapter {
     }
 
     class ViewHolder{
-        private TextView name_battery ;
+        private TextView name_battery , shape , point , size ;
+        private EditText number ;
+        private Button confirm ;
 
         public ViewHolder (View row) {
             name_battery = row.findViewById(R.id.tv_cardview_battery_name);
+            shape = row.findViewById(R.id.tv_cardview_battery_shape);
+            point = row.findViewById(R.id.tv_cardview_battery_point);
+            size = row.findViewById(R.id.tv_cardview_battery_size);
+            number = row.findViewById(R.id.et_cardview_number) ;
+            confirm = row.findViewById(R.id.btn_cardview_confrim);
         }
 
 
@@ -65,8 +79,18 @@ public class BatteryAdapter extends BaseAdapter {
         }
 
         BatteryData batteryData = (BatteryData) getItem(position);
-        viewHolder.name_battery.setText(batteryData.getName());
-
+        viewHolder.name_battery.setText(batteryData.getName_battery());
+        viewHolder.shape.setText("Shape: "+batteryData.getShape());
+        viewHolder.point.setText("Point: " + batteryData.getPoint());
+        viewHolder.size.setText("Size: "+batteryData.getSize());
+        viewHolder.confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CartData.putCart(batteryData.getId() , new CartItemData(batteryData , Integer.parseInt(String.valueOf(viewHolder.number.getText()))));
+                viewHolder.number.setText("");
+                Log.d("IdPin-Quanity" , CartData.getCart().get(batteryData.getId()).getQuantity() + "-" + CartData.getCart().get(batteryData.getId()).getBatteryData().getName_battery()) ;
+            }
+        });
 
         return view;
     }

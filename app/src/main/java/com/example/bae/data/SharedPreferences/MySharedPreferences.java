@@ -49,6 +49,7 @@ public class MySharedPreferences {
         return sharedPreferences.getStringSet(key , valueDefault);
     }
 
+
     public void removeDataValue(String key){
         SharedPreferences sharedPreferences = mContext.getSharedPreferences(MY_SHARED_FREFERENCES , Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit() ;

@@ -9,8 +9,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,9 +21,9 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.bae.Interface.replaceFragement;
 import com.example.bae.R;
+import com.example.bae.data.Cart.CartData;
 import com.example.bae.data.User.UserData;
 import com.example.bae.ui.Battery.BatteryFragment;
-import com.example.bae.ui.Battery.CardViewBattery.CardViewBatteryFragment;
 import com.example.bae.ui.Sub.SubFragment;
 import com.example.bae.ui.home.HomeFragment;
 import com.example.bae.ui.include.menu.MenuCustome;
@@ -79,12 +82,22 @@ public class MenuBottom extends MenuCustome implements replaceFragement {
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setContentView(R.layout.bottomsheetlayout);
 
-                ListView listView = dialog.findViewById(R.id.listview);
+                ListView listView = dialog.findViewById(R.id.listCart);
                 ImageView cancelButton = dialog.findViewById(R.id.cancelButton);
+                Button confirmCart = dialog.findViewById(R.id.btn_bottom_sheet_layout_confirm_cart);
+
+                listView.setAdapter(new ItemCartAdapter(bottomNavigationView.getContext()));
 
                 cancelButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+                confirmCart.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        openDialogNotification() ;
                         dialog.dismiss();
                     }
                 });
@@ -99,7 +112,40 @@ public class MenuBottom extends MenuCustome implements replaceFragement {
                 Toast.makeText(context , "Bạn cần đăng nhập" , Toast.LENGTH_LONG).show();
             }
 
+    }
+
+    private void openDialogNotification(){
+        final Dialog dialog = new Dialog(bottomNavigationView.getContext()) ;
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE) ;
+        dialog.setContentView(R.layout.layout_dialog_confrim_cart);
+
+        Window window = dialog.getWindow();
+        if(window == null){
+            return ;
         }
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT , WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        WindowManager.LayoutParams windowAttribute = window.getAttributes() ;
+        windowAttribute.gravity = Gravity.CENTER;
+        window.setAttributes(windowAttribute);
+
+        dialog.setCancelable(true);
+
+        ListView listView = dialog.findViewById(R.id.listCartConfirm);
+        listView.setAdapter(new ItemCartConfirmAdapter(context));
+
+        Button button = dialog.findViewById(R.id.btn_dialog_cart_confirm) ;
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CartData.confirmCart(context);
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
 
 
 

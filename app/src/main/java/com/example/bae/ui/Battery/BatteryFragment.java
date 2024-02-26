@@ -15,6 +15,12 @@ import android.widget.ListView;
 
 import com.example.bae.R;
 import com.example.bae.data.Battery.BatteryData;
+import com.example.bae.data.Battery.BatteryRequest;
+import com.example.bae.data.RequestCustome;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -34,12 +40,25 @@ public class BatteryFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_battery, container, false);
 
         listBattey = view.findViewById(R.id.l_list_battery);
-        ArrayList<BatteryData> batteryData = new ArrayList<>() ;
-        batteryData.add(new BatteryData("s")) ;
-        batteryData.add(new BatteryData("a")) ;
-        batteryData.add(new BatteryData("s")) ;
 
-        listBattey.setAdapter(new BatteryAdapter(getContext() , batteryData));
+
+        BatteryRequest batteryRequest = new BatteryRequest(getContext()) ;
+        batteryRequest.getDataFromServe(new RequestCustome.HandleResponeJSON() {
+            @Override
+            public void handleResponeJSON(JSONObject response) throws JSONException {
+                ArrayList<BatteryData> batteryData = new ArrayList<>() ;
+                JSONArray jsonArray = response.getJSONArray("data") ;
+                for (int i = 0; i < jsonArray.length() ; i++) {
+                    JSONObject jsonObject = (JSONObject) jsonArray.get(i);
+                    batteryData.add(new BatteryData(jsonObject.getString("id") , jsonObject.getString("name_battery") , jsonObject.getString("size") , jsonObject.getString("shape") , jsonObject.getString("point") , jsonObject.getString("image"))) ;
+                }
+
+
+                listBattey.setAdapter(new BatteryAdapter(getContext() , batteryData));
+            }
+        });
+
+
 
         return view ;
     }

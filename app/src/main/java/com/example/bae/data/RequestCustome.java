@@ -24,7 +24,7 @@ import java.util.Map;
 
 public abstract class RequestCustome  {
     protected Context context ;
-    protected String url = "https:///bd35-113-160-225-45.ngrok-free.app/DACS2/public/api/" ;
+    protected String url = "https:///6ac6-14-233-231-103.ngrok-free.app/DACS2/public/api/" ;
 //        protected String url = "http://192.168.1.101/APIDACS3/public/api/" ;
 
     public RequestCustome(Context context){
