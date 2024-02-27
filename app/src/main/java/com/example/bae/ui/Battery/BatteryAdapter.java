@@ -8,13 +8,15 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.bae.R;
 import com.example.bae.data.Battery.BatteryData;
 import com.example.bae.data.Cart.CartData;
 import com.example.bae.data.Cart.CartItemData;
+import com.example.bae.data.RequestCustome;
 import com.example.bae.ui.Battery.CardViewBattery.CardViewBatteryFragment;
 
 import java.util.ArrayList;
@@ -33,6 +35,8 @@ public class BatteryAdapter extends BaseAdapter {
         private TextView name_battery , shape , point , size ;
         private EditText number ;
         private Button confirm ;
+        private ImageView imageView ;
+
 
         public ViewHolder (View row) {
             name_battery = row.findViewById(R.id.tv_cardview_battery_name);
@@ -41,6 +45,7 @@ public class BatteryAdapter extends BaseAdapter {
             size = row.findViewById(R.id.tv_cardview_battery_size);
             number = row.findViewById(R.id.et_cardview_number) ;
             confirm = row.findViewById(R.id.btn_cardview_confrim);
+            imageView = row.findViewById(R.id.img_cardview_battery_imageBattery) ;
         }
 
 
@@ -83,6 +88,10 @@ public class BatteryAdapter extends BaseAdapter {
         viewHolder.shape.setText("Shape: "+batteryData.getShape());
         viewHolder.point.setText("Point: " + batteryData.getPoint());
         viewHolder.size.setText("Size: "+batteryData.getSize());
+
+        String img = RequestCustome.getInstance().getUrlStorage()+"image/Battery/"+batteryData.getImage()+".jpg";
+        Glide.with(view.getContext()).load(img).into(viewHolder.imageView);
+
         viewHolder.confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity implements fingerprintAuthe
         fingerPrint = findViewById(R.id.iv_login_signIn);
         checkBox = findViewById(R.id.cb_save_account);
 
-        userRequest = new UserRequest(getApplicationContext());
+        userRequest = new UserRequest();
 
         email.setText(DataLocalManager.getUsename());
 
@@ -104,7 +104,7 @@ public class LoginActivity extends AppCompatActivity implements fingerprintAuthe
     private void login(String email , String password){
         LoadingDialog dialog = new LoadingDialog(LoginActivity.this);
         dialog.startAlerDialog();
-        userRequest.checkAccount(email, password, new UserRequest.HandleResponeString() {
+        userRequest.checkAccount(email, password, new RequestCustome.HandleResponeString() {
             @Override
             public void handleResponeString(String response) throws JSONException {
                 int id = Integer.parseInt(response) ;

@@ -5,13 +5,14 @@ import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 
+import com.example.bae.data.RequestCustome;
 import com.journeyapps.barcodescanner.CaptureActivity;
 import com.journeyapps.barcodescanner.ScanOptions;
 
 import java.io.Serializable;
 import java.util.Map;
 
-public class UserData implements Serializable {
+public class UserData  implements Serializable {
     String  id , name, cccd , dob, gender, pob , address , email ;
     int status , point ;
 
@@ -115,14 +116,14 @@ public class UserData implements Serializable {
 
     public void sendOtp(String codeOtp , Context context){
 
-        UserRequest request = new UserRequest(context);
 
-        request.RequestData("auth/sendOtp", new UserRequest.HandleRequest() {
+
+        RequestCustome.RequestData("auth/sendOtp", new RequestCustome.HandleRequest() {
             @Override
             public void hanldeRequest(String respone) {
                 Toast.makeText(context , respone , Toast.LENGTH_LONG).show();
             }
-        }, new UserRequest.setParams() {
+        }, new RequestCustome.setParams() {
             @Override
             public void setParams(Map<String, String> params) {
                 params.put("email" , getEmail());
@@ -142,7 +143,4 @@ public class UserData implements Serializable {
 
         barLauncher.launch(options);
     }
-
-
-
 }

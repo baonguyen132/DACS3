@@ -22,29 +22,29 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public abstract class RequestCustome  {
-    protected Context context ;
-    protected String url = "https:///6ac6-14-233-231-103.ngrok-free.app/DACS2/public/api/" ;
-//        protected String url = "http://192.168.1.101/APIDACS3/public/api/" ;
+public class RequestCustome  {
+    private Context context ;
+    private static RequestCustome requestCustome ;
+//    protected String url = "http://192.168.1.101/APIDACS3/public/api/" ;
+    private static String link = "https:///4071-2405-4802-69af-b30-341d-a95-e2ac-3dba.ngrok-free.app/DACS2/public/" ;
+    protected  String urlAPI = link+"api/" ;
+    protected  String urlStorage = link+"storage/" ;
 
-    public RequestCustome(Context context){
-        this.context = context ;
+    public static void init(Context context){
+        requestCustome = new RequestCustome() ;
+        requestCustome.context = context ;
     }
 
-
-    public void setContext(Context context) {
-        this.context = context;
+    public static RequestCustome getInstance() {
+        if(requestCustome == null){
+            requestCustome = new RequestCustome() ;
+        }
+        return requestCustome ;
     }
+    public static void ResponseData(String urlAdd , HandleResponeJSON handle) {
 
-    public Context getContext() {
-        return context;
-    }
-
-
-    public void ResponseData(String urlAdd , UserRequest.HandleResponeJSON handle) {
-
-        RequestQueue requestQueue = Volley.newRequestQueue(context) ;
-        JsonObjectRequest requestUserData = new JsonObjectRequest(Request.Method.GET, url+urlAdd, null, new Response.Listener<JSONObject>() {
+        RequestQueue requestQueue = Volley.newRequestQueue(RequestCustome.getInstance().context) ;
+        JsonObjectRequest requestUserData = new JsonObjectRequest(Request.Method.GET, RequestCustome.getInstance().urlAPI+urlAdd, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
@@ -66,9 +66,9 @@ public abstract class RequestCustome  {
 
     }
 
-    public void RequestData(String urlAdd , UserRequest.HandleRequest handleRequest , UserRequest.setParams userSetParams) {
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
-        StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.POST, url+urlAdd, new Response.Listener<String>() {
+    public static void RequestData(String urlAdd , HandleRequest handleRequest , setParams userSetParams) {
+        RequestQueue requestQueue = Volley.newRequestQueue(RequestCustome.getInstance().context);
+        StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.POST, RequestCustome.getInstance().urlAPI+urlAdd, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -96,6 +96,29 @@ public abstract class RequestCustome  {
 
     }
 
+    public static void setContext(Context context) {
+        RequestCustome.getInstance().context = context ;
+    }
+
+    public static Context getContext() {
+        return RequestCustome.getInstance().context;
+    }
+
+    public String getUrlAPI() {
+        return RequestCustome.getInstance().urlAPI;
+    }
+
+    public void setUrlAPI(String urlAPI) {
+        RequestCustome.getInstance().urlAPI = urlAPI;
+    }
+
+    public String getUrlStorage() {
+        return RequestCustome.getInstance().urlStorage;
+    }
+
+    public void setUrlStorage(String urlStorage) {
+        RequestCustome.getInstance().urlStorage = urlStorage;
+    }
 
     public interface HandleResponeJSON{
         void handleResponeJSON(JSONObject response) throws JSONException;

@@ -42,7 +42,7 @@ public class BatteryFragment extends Fragment {
         listBattey = view.findViewById(R.id.l_list_battery);
 
 
-        BatteryRequest batteryRequest = new BatteryRequest(getContext()) ;
+        BatteryRequest batteryRequest = new BatteryRequest() ;
         batteryRequest.getDataFromServe(new RequestCustome.HandleResponeJSON() {
             @Override
             public void handleResponeJSON(JSONObject response) throws JSONException {

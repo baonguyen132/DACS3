@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.bae.data.RequestCustome;
 import com.example.bae.ui.Login_SignUp.LoginActivity;
 
 import java.io.Serializable;
@@ -30,8 +31,8 @@ public class Clients extends UserData   {
     public void signUp(Activity activity){
         Context context = activity.getApplicationContext() ;
 
-        UserRequest request = new UserRequest(context) ;
-        request.RequestData("auth/signup", new UserRequest.HandleRequest() {
+
+        RequestCustome.RequestData("auth/signup", new RequestCustome.HandleRequest() {
             @Override
             public void hanldeRequest(String respone) {
 
@@ -46,7 +47,7 @@ public class Clients extends UserData   {
 
                 }
             }
-        }, new UserRequest.setParams() {
+        }, new RequestCustome.setParams() {
             @Override
             public void setParams(Map<String, String> params) {
                 params.put("name" , getName()) ;

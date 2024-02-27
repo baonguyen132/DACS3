@@ -19,10 +19,9 @@ import java.util.ArrayList;
 public class ItemCartConfirmAdapter extends BaseAdapter {
     private ArrayList<CartItemData> cartItemDatas ;
     private Context context ;
-
-    public ItemCartConfirmAdapter(Context context) {
+    public ItemCartConfirmAdapter(Context context , ArrayList<CartItemData> cartItemDatas) {
         this.context = context;
-        cartItemDatas = new ArrayList<>(CartData.getCart().values());
+        this.cartItemDatas = cartItemDatas;
     }
 
     class ViewHolder{
@@ -35,7 +34,6 @@ public class ItemCartConfirmAdapter extends BaseAdapter {
             point = view.findViewById(R.id.tv_item_cart_confirm_point);
             total_point = view.findViewById(R.id.tv_item_cart_confirm_totalpoint);
             quantity = view.findViewById(R.id.tv_item_cart_confirm_quantity);
-
 
         }
 
@@ -80,10 +78,8 @@ public class ItemCartConfirmAdapter extends BaseAdapter {
         totalPoint(viewHolder , cartItemData) ;
 
 
-
         return view;
     }
-
     private void totalPoint(ItemCartConfirmAdapter.ViewHolder viewHolder , CartItemData cartItemData){
         int total = cartItemData.getBatteryData().getPoint() * cartItemData.getQuantity() ;
         viewHolder.total_point.setText(total+"");

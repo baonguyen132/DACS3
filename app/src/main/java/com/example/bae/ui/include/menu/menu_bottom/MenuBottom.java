@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ import androidx.fragment.app.FragmentManager;
 import com.example.bae.Interface.replaceFragement;
 import com.example.bae.R;
 import com.example.bae.data.Cart.CartData;
+import com.example.bae.data.Cart.CartItemData;
 import com.example.bae.data.User.UserData;
 import com.example.bae.ui.Battery.BatteryFragment;
 import com.example.bae.ui.Sub.SubFragment;
@@ -31,10 +33,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.ArrayList;
+
 public class MenuBottom extends MenuCustome implements replaceFragement {
 
     private FloatingActionButton fab ;
     private BottomNavigationView bottomNavigationView ;
+    private ArrayList<CartItemData> cartItemDatas ;
 
 
     public MenuBottom (FragmentManager fragmentManager , Activity activity , UserData user ){
@@ -52,7 +57,13 @@ public class MenuBottom extends MenuCustome implements replaceFragement {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showBottomDialog();
+                cartItemDatas = new ArrayList<>(CartData.getCart().values());
+                if(cartItemDatas.size() == 0){
+                    Toast.makeText(context , "Giỏ hàng đang trống" , Toast.LENGTH_LONG).show();
+                }
+                else {
+                    showBottomDialog();
+                }
             }
         });
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -132,14 +143,33 @@ public class MenuBottom extends MenuCustome implements replaceFragement {
 
         dialog.setCancelable(true);
 
+
+
         ListView listView = dialog.findViewById(R.id.listCartConfirm);
-        listView.setAdapter(new ItemCartConfirmAdapter(context));
+        TextView tvtotalPoint = dialog.findViewById(R.id.tv_dialog_cart_confirm_total_point);
+        TextView tvtotalQuanity = dialog.findViewById(R.id.tv_dialog_cart_confirm_total_quantity);
+        EditText edaddress = dialog.findViewById(R.id.et_dialog_cart_address);
+
+        listView.setAdapter(new ItemCartConfirmAdapter(context , cartItemDatas));
+
+
+
+
+        int totalPoint = 0 , totalQuanity = 0 ;
+        for (int i = 0; i < cartItemDatas.size(); i++) {
+            totalPoint = totalPoint + cartItemDatas.get(i).getQuantity()*cartItemDatas.get(i).getBatteryData().getPoint() ;
+            totalQuanity = totalQuanity + cartItemDatas.get(i).getQuantity() ;
+        }
+
+        tvtotalPoint.setText(totalPoint+"");
+        tvtotalQuanity.setText(totalQuanity+"");
+
 
         Button button = dialog.findViewById(R.id.btn_dialog_cart_confirm) ;
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CartData.confirmCart(context);
+                CartData.confirmCart(String.valueOf(edaddress.getText()) , user );
                 dialog.dismiss();
             }
         });

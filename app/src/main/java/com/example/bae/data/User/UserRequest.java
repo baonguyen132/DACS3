@@ -22,24 +22,24 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserRequest extends RequestCustome {
+public class UserRequest {
 
 
-    public UserRequest(Context context) {
-        super(context);
+    public UserRequest() {
+
     }
 
-    public void getDataFromServe(int id , UserRequest.HandleResponeJSON handle){
-        ResponseData("auth/id=" +id , handle);
+    public void getDataFromServe(int id , RequestCustome.HandleResponeJSON handle){
+        RequestCustome.ResponseData("auth/id=" +id , handle);
     }
 
-    public void checkAccount(String email, String password , UserRequest.HandleResponeString handle){
-        RequestData("auth/checkUser", new HandleRequest() {
+    public void checkAccount(String email, String password , RequestCustome.HandleResponeString handle){
+        RequestCustome.RequestData("auth/checkUser", new RequestCustome.HandleRequest() {
             @Override
             public void hanldeRequest(String respone) throws JSONException {
                 handle.handleResponeString(respone);
             }
-        }, new setParams() {
+        }, new RequestCustome.setParams() {
             @Override
             public void setParams(Map<String, String> params) {
                 params.put("email" , email.toString().trim() );

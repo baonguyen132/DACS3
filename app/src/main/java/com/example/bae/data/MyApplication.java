@@ -12,5 +12,6 @@ public class MyApplication extends Application {
         super.onCreate();
         DataLocalManager.init(getApplicationContext());
         CartData.init();
+        RequestCustome.init(getApplicationContext());
     }
 }

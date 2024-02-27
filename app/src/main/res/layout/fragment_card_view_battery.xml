@@ -37,7 +37,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/img_cardview_battery_imageBattery"
                     android:layout_width="86dp"
                     android:layout_height="130dp"
                     android:elevation="20dp"

@@ -5,12 +5,11 @@ import android.content.Context;
 import com.example.bae.data.RequestCustome;
 import com.example.bae.data.User.UserRequest;
 
-public class BatteryRequest extends RequestCustome {
-    public BatteryRequest(Context context) {
-        super(context);
+public class BatteryRequest  {
+    public BatteryRequest() {
     }
 
-    public void getDataFromServe(UserRequest.HandleResponeJSON handle){
-        ResponseData("batteryapi", handle);
+    public void getDataFromServe(RequestCustome.HandleResponeJSON handle){
+        RequestCustome.ResponseData("batteryapi", handle);
     }
 }

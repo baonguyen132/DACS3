@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.example.bae.data.RequestCustome;
 import com.example.bae.data.SharedPreferences.DataLocalManager;
+import com.example.bae.data.User.UserData;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -79,16 +80,19 @@ public class CartData {
         return CartData.getInstance().cart ;
     }
 
-    public static void confirmCart(Context context){
-        CartRequest cartRequest = new CartRequest(context) ;
+    public static void confirmCart(String address , UserData userData){
+        CartRequest cartRequest = new CartRequest() ;
         cartRequest.ResquestCartData(new RequestCustome.HandleRequest() {
             @Override
             public void hanldeRequest(String respone) throws JSONException {
                 DataLocalManager.removeCart();
                 CartData.init();
+                if(respone.equals("successful")){
+                    Toast.makeText(RequestCustome.getContext() , "Thêm giỏ hàng thành công" , Toast.LENGTH_LONG).show();
+                }
                 Log.d("Result" , respone) ;
             }
-        });
+        } , address , userData);
     }
 
 }
