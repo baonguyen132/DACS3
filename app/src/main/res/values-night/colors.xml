@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
 
+
+    <color name="edit_text_background">#25272E</color>
+
     <color name="main_color">#1ca586</color>
-    <color name="background">#F7F7FA</color>
-    <color name="card_background">#FFFFFF</color>
-    <color name="primary_text">#565B65</color>
-    <color name="secondary_text">#989A9D</color>
-
-    <color name="edit_text_background">#f6fbff</color>
-
+    <color name="background">#252C4B</color>
+    <color name="card_background">#27325F</color>
+    <color name="primary_text">#FFFFFF</color>
+    <color name="secondary_text">#797F95</color>
     <color name="white">#FFFFFFFF</color>
     <color name="dashboard_item_1">#2CC2EA</color>
     <color name="dashboard_item_2">#4DE9C9</color>

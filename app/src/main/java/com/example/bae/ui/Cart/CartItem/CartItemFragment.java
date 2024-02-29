@@ -1,4 +1,4 @@
-package com.example.bae.ui.Sub;
+package com.example.bae.ui.Cart.CartItem;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -14,24 +14,24 @@ import android.view.ViewGroup;
 
 import com.example.bae.R;
 
-public class SubFragment extends Fragment {
+public class CartItemFragment extends Fragment {
 
-    private SubViewModel mViewModel;
+    private CartItemViewModel mViewModel;
 
-    public static SubFragment newInstance() {
-        return new SubFragment();
+    public static CartItemFragment newInstance() {
+        return new CartItemFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_sub, container, false);
+        return inflater.inflate(R.layout.fragment_history_item, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(SubViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(CartItemViewModel.class);
         // TODO: Use the ViewModel
     }
 

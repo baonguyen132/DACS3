@@ -2,7 +2,7 @@ package com.example.bae.data;
 
 import android.app.Application;
 
-import com.example.bae.data.Cart.CartData;
+import com.example.bae.data.CartOfUser.CartOfUser;
 import com.example.bae.data.SharedPreferences.DataLocalManager;
 
 public class MyApplication extends Application {
@@ -11,7 +11,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         DataLocalManager.init(getApplicationContext());
-        CartData.init();
+        CartOfUser.init();
         RequestCustome.init(getApplicationContext());
     }
 }

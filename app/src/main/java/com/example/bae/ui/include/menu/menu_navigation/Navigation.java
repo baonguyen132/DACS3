@@ -2,7 +2,6 @@ package com.example.bae.ui.include.menu.menu_navigation;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,17 +16,11 @@ import com.example.bae.Interface.replaceFragement;
 import com.example.bae.R;
 import com.example.bae.data.SharedPreferences.DataLocalManager;
 import com.example.bae.data.User.UserData;
-import com.example.bae.data.User.UserRequest;
 import com.example.bae.ui.Login_SignUp.LoginActivity;
 import com.example.bae.ui.Login_SignUp.SignUpActivity;
-import com.example.bae.ui.Sub.SubFragment;
+import com.example.bae.ui.Cart.CartFragment;
 import com.example.bae.ui.include.menu.MenuCustome;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class Navigation extends MenuCustome implements replaceFragement {
     private NavigationView navigationView ;
@@ -78,7 +71,7 @@ public class Navigation extends MenuCustome implements replaceFragement {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int i = item.getItemId() ;
                 if(i == R.id.nav_settings){
-                    replaceFragement(new SubFragment() ,fragmentManager);
+                    replaceFragement(new CartFragment() ,fragmentManager);
                 }
                 else if (i == 1) {
 

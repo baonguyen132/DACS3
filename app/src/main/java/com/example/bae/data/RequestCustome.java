@@ -26,7 +26,7 @@ public class RequestCustome  {
     private Context context ;
     private static RequestCustome requestCustome ;
 //    protected String url = "http://192.168.1.101/APIDACS3/public/api/" ;
-    private static String link = "https:///4071-2405-4802-69af-b30-341d-a95-e2ac-3dba.ngrok-free.app/DACS2/public/" ;
+    private static String link = "https:///20ce-2405-4802-69af-b30-b475-5f71-3b77-9ff7.ngrok-free.app/DACS2/public/" ;
     protected  String urlAPI = link+"api/" ;
     protected  String urlStorage = link+"storage/" ;
 
@@ -65,7 +65,6 @@ public class RequestCustome  {
         requestQueue.add(requestUserData);
 
     }
-
     public static void RequestData(String urlAdd , HandleRequest handleRequest , setParams userSetParams) {
         RequestQueue requestQueue = Volley.newRequestQueue(RequestCustome.getInstance().context);
         StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.POST, RequestCustome.getInstance().urlAPI+urlAdd, new Response.Listener<String>() {

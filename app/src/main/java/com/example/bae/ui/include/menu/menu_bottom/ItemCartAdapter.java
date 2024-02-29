@@ -2,19 +2,16 @@ package com.example.bae.ui.include.menu.menu_bottom;
 
 import android.content.Context;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 
-import com.example.bae.data.Cart.CartData;
-import com.example.bae.data.Cart.CartItemData;
+import com.example.bae.data.CartOfUser.CartOfUser;
+import com.example.bae.data.CartOfUser.CartOfUserItem;
 
 import java.util.ArrayList;
 import com.example.bae.R;
@@ -22,12 +19,12 @@ import com.example.bae.ui.include.menu.menu_bottom.ItemCart.ItemCartFragment;
 
 public class ItemCartAdapter extends BaseAdapter {
 
-    private ArrayList<CartItemData> cartItemDatas ;
+    private ArrayList<CartOfUserItem> cartOfUserItemData;
     private Context context ;
 
     public ItemCartAdapter(Context context) {
         this.context = context;
-        cartItemDatas = new ArrayList<>(CartData.getCart().values());
+        cartOfUserItemData = new ArrayList<>(CartOfUser.getCart().values());
     }
 
     class ViewHolder{
@@ -49,12 +46,12 @@ public class ItemCartAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return cartItemDatas.size();
+        return cartOfUserItemData.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return cartItemDatas.get(position);
+        return cartOfUserItemData.get(position);
     }
 
     @Override
@@ -78,34 +75,34 @@ public class ItemCartAdapter extends BaseAdapter {
             viewHolder = (ItemCartAdapter.ViewHolder) view.getTag();
         }
 
-        CartItemData cartItemData = (CartItemData) getItem(position);
+        CartOfUserItem cartOfUserItem = (CartOfUserItem) getItem(position);
 
-        viewHolder.name_battery.setText(cartItemData.getBatteryData().getName_battery());
-        viewHolder.point.setText(cartItemData.getBatteryData().getPoint()+"");
+        viewHolder.name_battery.setText(cartOfUserItem.getBatteryData().getName_battery());
+        viewHolder.point.setText(cartOfUserItem.getBatteryData().getPoint()+"");
 
-        totalPoint(viewHolder , cartItemData) ;
+        totalPoint(viewHolder , cartOfUserItem) ;
 
         viewHolder.increase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int change = cartItemData.getQuantity() + 1 ;
-                CartData.changeQuantityOfItem(cartItemData , change);
+                int change = cartOfUserItem.getQuantity() + 1 ;
+                CartOfUser.changeQuantityOfItem(cartOfUserItem, change);
 
-                totalPoint(viewHolder , cartItemData) ;
+                totalPoint(viewHolder , cartOfUserItem) ;
             }
         });
         viewHolder.decrease.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int change = cartItemData.getQuantity() - 1   ;
-                CartData.changeQuantityOfItem(cartItemData , change);
+                int change = cartOfUserItem.getQuantity() - 1   ;
+                CartOfUser.changeQuantityOfItem(cartOfUserItem, change);
 
                 if(change == 0){
-                    cartItemDatas.remove(position);
+                    ItemCartAdapter.this.cartOfUserItemData.remove(position);
                     notifyDataSetChanged();
                 }
                 else {
-                    totalPoint(viewHolder , cartItemData) ;
+                    totalPoint(viewHolder , cartOfUserItem) ;
                 }
 
 
@@ -118,9 +115,9 @@ public class ItemCartAdapter extends BaseAdapter {
         return view;
     }
 
-    private void totalPoint(ItemCartAdapter.ViewHolder viewHolder , CartItemData cartItemData){
-        int total = cartItemData.getBatteryData().getPoint() * cartItemData.getQuantity() ;
+    private void totalPoint(ItemCartAdapter.ViewHolder viewHolder , CartOfUserItem cartOfUserItem){
+        int total = cartOfUserItem.getBatteryData().getPoint() * cartOfUserItem.getQuantity() ;
         viewHolder.total_point.setText(total+"");
-        viewHolder.quantity.setText(cartItemData.getQuantity()+"");
+        viewHolder.quantity.setText(cartOfUserItem.getQuantity()+"");
     }
 }

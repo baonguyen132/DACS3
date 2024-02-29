@@ -22,11 +22,11 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.bae.Interface.replaceFragement;
 import com.example.bae.R;
-import com.example.bae.data.Cart.CartData;
-import com.example.bae.data.Cart.CartItemData;
+import com.example.bae.data.CartOfUser.CartOfUser;
+import com.example.bae.data.CartOfUser.CartOfUserItem;
 import com.example.bae.data.User.UserData;
 import com.example.bae.ui.Battery.BatteryFragment;
-import com.example.bae.ui.Sub.SubFragment;
+import com.example.bae.ui.Cart.CartFragment;
 import com.example.bae.ui.home.HomeFragment;
 import com.example.bae.ui.include.menu.MenuCustome;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -39,7 +39,7 @@ public class MenuBottom extends MenuCustome implements replaceFragement {
 
     private FloatingActionButton fab ;
     private BottomNavigationView bottomNavigationView ;
-    private ArrayList<CartItemData> cartItemDatas ;
+    private ArrayList<CartOfUserItem> cartOfUserItemData;
 
 
     public MenuBottom (FragmentManager fragmentManager , Activity activity , UserData user ){
@@ -57,8 +57,8 @@ public class MenuBottom extends MenuCustome implements replaceFragement {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cartItemDatas = new ArrayList<>(CartData.getCart().values());
-                if(cartItemDatas.size() == 0){
+                cartOfUserItemData = new ArrayList<>(CartOfUser.getCart().values());
+                if(cartOfUserItemData.size() == 0){
                     Toast.makeText(context , "Giỏ hàng đang trống" , Toast.LENGTH_LONG).show();
                 }
                 else {
@@ -76,8 +76,13 @@ public class MenuBottom extends MenuCustome implements replaceFragement {
                 else if(id == R.id.battery){
                     replaceFragement(new BatteryFragment(), fragmentManager);
                 }
-                else if(id == R.id.subscriptions){
-                    replaceFragement(new SubFragment() , fragmentManager);
+                else if(id == R.id.history){
+                    if(user == null){
+                        Toast.makeText(context , "Bạn cần đăng nhập" , Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        replaceFragement(new CartFragment() , fragmentManager);
+                    }
                 }
 
 
@@ -150,15 +155,15 @@ public class MenuBottom extends MenuCustome implements replaceFragement {
         TextView tvtotalQuanity = dialog.findViewById(R.id.tv_dialog_cart_confirm_total_quantity);
         EditText edaddress = dialog.findViewById(R.id.et_dialog_cart_address);
 
-        listView.setAdapter(new ItemCartConfirmAdapter(context , cartItemDatas));
+        listView.setAdapter(new ItemCartConfirmAdapter(context , cartOfUserItemData));
 
 
 
 
         int totalPoint = 0 , totalQuanity = 0 ;
-        for (int i = 0; i < cartItemDatas.size(); i++) {
-            totalPoint = totalPoint + cartItemDatas.get(i).getQuantity()*cartItemDatas.get(i).getBatteryData().getPoint() ;
-            totalQuanity = totalQuanity + cartItemDatas.get(i).getQuantity() ;
+        for (int i = 0; i < cartOfUserItemData.size(); i++) {
+            totalPoint = totalPoint + cartOfUserItemData.get(i).getQuantity()* cartOfUserItemData.get(i).getBatteryData().getPoint() ;
+            totalQuanity = totalQuanity + cartOfUserItemData.get(i).getQuantity() ;
         }
 
         tvtotalPoint.setText(totalPoint+"");
@@ -169,7 +174,7 @@ public class MenuBottom extends MenuCustome implements replaceFragement {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CartData.confirmCart(String.valueOf(edaddress.getText()) , user );
+                CartOfUser.confirmCart(String.valueOf(edaddress.getText()) , user );
                 dialog.dismiss();
             }
         });

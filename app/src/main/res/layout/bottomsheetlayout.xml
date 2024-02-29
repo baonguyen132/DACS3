@@ -30,7 +30,7 @@
                 android:padding="8dp"
                 android:text="Giỏ hàng"
                 android:textAlignment="viewStart"
-                android:textColor="@color/lavender"
+                android:textColor="@color/main_color"
                 android:textSize="25dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"

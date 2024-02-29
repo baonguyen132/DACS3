@@ -3,8 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.include.menu.menu_bottom.ItemCart.ItemCartFragment">
+    android:layout_height="wrap_content"
+    tools:context=".ui.include.menu.menu_bottom.ItemCart.ItemCartFragment"
+
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -22,7 +24,8 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/primary_text"/>
 
         <TextView
             android:id="@+id/tv_item_cart_confirm_point"
@@ -32,7 +35,8 @@
             android:layout_marginTop="8dp"
             android:text="Point"
             app:layout_constraintStart_toEndOf="@+id/textView9"
-            app:layout_constraintTop_toBottomOf="@+id/tv_item_cart_confirm_namebattery" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_item_cart_confirm_namebattery"
+            android:textColor="@color/primary_text"/>
 
 
         <TextView
@@ -43,7 +47,8 @@
             android:text="Điểm: "
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/tv_item_cart_confirm_namebattery"
-            app:layout_constraintTop_toBottomOf="@+id/tv_item_cart_confirm_namebattery" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_item_cart_confirm_namebattery"
+            android:textColor="@color/primary_text"/>
 
         <TextView
             android:id="@+id/tv_item_cart_confirm_totalpoint"
@@ -55,7 +60,8 @@
             android:text="Total point"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView10"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+            app:layout_constraintTop_toBottomOf="@+id/textView9"
+            android:textColor="@color/primary_text" />
 
         <TextView
             android:id="@+id/textView10"
@@ -67,7 +73,8 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tv_item_cart_confirm_namebattery"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+            app:layout_constraintTop_toBottomOf="@+id/textView9"
+            android:textColor="@color/primary_text" />
 
         <TextView
             android:id="@+id/tv_item_cart_confirm_quantity"
@@ -77,7 +84,8 @@
             android:layout_marginTop="8dp"
             android:text="Total quantity"
             app:layout_constraintStart_toEndOf="@+id/textView11"
-            app:layout_constraintTop_toBottomOf="@+id/tv_item_cart_confirm_namebattery" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_item_cart_confirm_namebattery"
+            android:textColor="@color/primary_text" />
 
         <TextView
             android:id="@+id/textView11"
@@ -88,7 +96,8 @@
             android:text="Tổng số lượng: "
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/tv_item_cart_confirm_point"
-            app:layout_constraintTop_toBottomOf="@+id/tv_item_cart_confirm_namebattery" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_item_cart_confirm_namebattery"
+            android:textColor="@color/primary_text" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

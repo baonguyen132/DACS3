@@ -39,7 +39,7 @@
                 android:layout_weight="1"
                 android:gravity="center|center_horizontal|center_vertical"
                 android:text="Quét căn cước công dân"
-                android:textColor="@color/lavender"
+                android:textColor="@color/main_color"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
@@ -60,7 +60,7 @@
             android:layout_marginTop="32dp"
             android:background="@drawable/edit_test_background"
             android:drawablePadding="8dp"
-            android:drawableTint="@color/lavender"
+            android:drawableTint="@color/main_color"
             android:ems="10"
             android:hint="Fullname"
             android:inputType="text"
@@ -79,7 +79,7 @@
             android:background="@drawable/edit_test_background"
             android:drawableLeft="@android:drawable/ic_dialog_email"
             android:drawablePadding="8dp"
-            android:drawableTint="@color/lavender"
+            android:drawableTint="@color/main_color"
             android:ems="10"
             android:hint="Email"
             android:inputType="textEmailAddress"
@@ -96,7 +96,7 @@
             android:background="@drawable/edit_test_background"
             android:drawableLeft="@android:drawable/ic_lock_lock"
             android:drawablePadding="8dp"
-            android:drawableTint="@color/lavender"
+            android:drawableTint="@color/main_color"
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword"
@@ -115,7 +115,7 @@
             android:background="@drawable/edit_test_background"
             android:drawableLeft="@drawable/baseline_location_on_24"
             android:drawablePadding="8dp"
-            android:drawableTint="@color/lavender"
+            android:drawableTint="@color/main_color"
             android:ems="10"
             android:hint="Address"
             android:inputType="text"
@@ -148,7 +148,7 @@
                     android:background="@drawable/edit_test_background"
                     android:drawableLeft="@drawable/baseline_edit_calendar_24"
                     android:drawablePadding="8dp"
-                    android:drawableTint="@color/lavender"
+                    android:drawableTint="@color/main_color"
                     android:ems="10"
                     android:hint="Date of birth"
                     android:inputType="text"
@@ -161,7 +161,7 @@
                     android:layout_marginTop="5dp"
                     android:background="@drawable/edit_test_background"
                     android:drawablePadding="8dp"
-                    android:drawableTint="@color/lavender"
+                    android:drawableTint="@color/main_color"
                     android:ems="10"
                     android:hint="Citizen identification"
                     android:inputType="number"
@@ -181,7 +181,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Gender"
-                    android:textColor="@color/lavender"
+                    android:textColor="@color/main_color"
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
@@ -194,18 +194,18 @@
                         android:id="@+id/r_signup_male"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:buttonTint="@color/lavender"
+                        android:buttonTint="@color/main_color"
                         android:drawableRight="@drawable/baseline_male_24"
-                        android:drawableTint="@color/lavender"
+                        android:drawableTint="@color/main_color"
                         android:text="Male" />
 
                     <RadioButton
                         android:id="@+id/r_signup_female"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:buttonTint="@color/lavender"
+                        android:buttonTint="@color/main_color"
                         android:drawableRight="@drawable/baseline_female_24"
-                        android:drawableTint="@color/lavender"
+                        android:drawableTint="@color/main_color"
                         android:text="Female" />
                 </RadioGroup>
             </LinearLayout>
@@ -216,7 +216,7 @@
             android:layout_width="340dp"
             android:layout_height="60dp"
             android:layout_marginTop="32dp"
-            android:backgroundTint="@color/lavender"
+            android:backgroundTint="@color/main_color"
             android:text="Sign Up"
             app:cornerRadius="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -247,7 +247,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:text="Sign In"
-                android:textColor="@color/lavender"
+                android:textColor="@color/main_color"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -257,7 +257,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
             android:text="Sign Up"
-            android:textColor="@color/black"
+            android:textColor="@color/primary_text"
             android:textSize="30dp"
 
             app:layout_constraintEnd_toEndOf="parent"

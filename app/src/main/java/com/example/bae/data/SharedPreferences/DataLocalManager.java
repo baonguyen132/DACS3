@@ -1,19 +1,15 @@
 package com.example.bae.data.SharedPreferences;
 
 import android.content.Context;
-import android.util.Log;
-import android.widget.Toast;
 
-import com.example.bae.data.Cart.CartData;
-import com.example.bae.data.Cart.CartItemData;
+
+import com.example.bae.data.CartOfUser.CartOfUser;
+
 import com.example.bae.data.User.UserData;
-import com.google.common.reflect.TypeToken;
+
 import com.google.gson.Gson;
 
-import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+
 
 public class DataLocalManager {
     private static final String PREF_FIRST_INSTALL = "PREF_FIRST_INSTALL";
@@ -67,25 +63,22 @@ public class DataLocalManager {
         Gson gson = new Gson() ;
         return gson.fromJson(strJsonUser , UserData.class);
     }
-    public static void setCart(CartData carts){
+    public static void setCart(CartOfUser carts){
         Gson gson = new Gson() ;
         String strJsonUser = gson.toJson(carts);
         DataLocalManager.getInstance().sharedPreferences.putStringValue(PREF_HASHMAP_CART , strJsonUser);
     }
 
-    public static CartData getCart(){
+    public static CartOfUser getCart(){
         String strJsonUser = DataLocalManager.getInstance().sharedPreferences.getStringValue(PREF_HASHMAP_CART) ;
         Gson gson = new Gson() ;
 
-        return gson.fromJson(strJsonUser , CartData.class);
+        return gson.fromJson(strJsonUser , CartOfUser.class);
     }
 
     public static void removeCart(){
         DataLocalManager.getInstance().sharedPreferences.removeDataValue(PREF_HASHMAP_CART);
     }
-
-
-
 
     public static void removeUser(){
         DataLocalManager.getInstance().sharedPreferences.removeDataValue(PREF_OBJECT_USER);

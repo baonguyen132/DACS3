@@ -11,10 +11,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
 
-import com.example.bae.Interface.fingerprintAuthentication;
 import com.example.bae.R;
 
 public class HomeFragment extends Fragment {

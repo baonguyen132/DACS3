@@ -8,130 +8,115 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="@drawable/edit_cardview_battery_background"
+        android:layout_margin="10dp">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="10dp"
-            app:contentPadding="10dp"
+        <View
+            android:id="@+id/view2"
+            android:layout_width="118dp"
+            android:layout_height="161dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/edit_img_card_view_battery_background"
+            android:elevation="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_cardview_battery_imageBattery"
+            android:layout_width="86dp"
+            android:layout_height="130dp"
+            android:elevation="20dp"
+            android:src="@drawable/headerbkg"
+
+            app:layout_constraintBottom_toBottomOf="@+id/view2"
+            app:layout_constraintEnd_toEndOf="@+id/view2"
+            app:layout_constraintStart_toStartOf="@+id/view2"
+            app:layout_constraintTop_toTopOf="@+id/view2" />
+
+        <TextView
+            android:id="@+id/tv_cardview_battery_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif"
+            android:text="Name Battery"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/view2"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/edit_cardview_battery_background">
+        <TextView
+            android:id="@+id/tv_cardview_battery_shape"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Shape: "
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_cardview_battery_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_cardview_battery_name" />
 
-                <View
-                    android:id="@+id/view2"
-                    android:layout_width="118dp"
-                    android:layout_height="161dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/edit_img_card_view_battery_background"
-                    android:elevation="20dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tv_cardview_battery_point"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:text="Point:"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_cardview_battery_size"
+            app:layout_constraintTop_toBottomOf="@+id/tv_cardview_battery_shape" />
 
-                <ImageView
-                    android:id="@+id/img_cardview_battery_imageBattery"
-                    android:layout_width="86dp"
-                    android:layout_height="130dp"
-                    android:elevation="20dp"
-                    android:src="@drawable/headerbkg"
+        <TextView
+            android:id="@+id/tv_cardview_battery_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Size:"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_cardview_battery_shape"
+            app:layout_constraintTop_toBottomOf="@+id/tv_cardview_battery_shape" />
 
-                    app:layout_constraintBottom_toBottomOf="@+id/view2"
-                    app:layout_constraintEnd_toEndOf="@+id/view2"
-                    app:layout_constraintStart_toStartOf="@+id/view2"
-                    app:layout_constraintTop_toTopOf="@+id/view2" />
+        <EditText
+            android:id="@+id/et_cardview_number"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/edit_cardview_edittext_background"
+            android:ems="10"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView13"
+            app:layout_constraintTop_toBottomOf="@+id/textView13"
+            app:layout_constraintVertical_bias="0.0" />
 
-                <TextView
-                    android:id="@+id/tv_cardview_battery_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="sans-serif"
-                    android:text="Name Battery"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/view2"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/btn_cardview_confrim"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="Xác nhận"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/et_cardview_number"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
-                <TextView
-                    android:id="@+id/tv_cardview_battery_shape"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="Shape: "
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="@+id/tv_cardview_battery_name"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_cardview_battery_name" />
-
-                <TextView
-                    android:id="@+id/tv_cardview_battery_point"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="12dp"
-                    android:text="Point:"
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toEndOf="@+id/tv_cardview_battery_size"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_cardview_battery_shape" />
-
-                <TextView
-                    android:id="@+id/tv_cardview_battery_size"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="Size:"
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="@+id/tv_cardview_battery_shape"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_cardview_battery_shape" />
-
-                <EditText
-                    android:id="@+id/et_cardview_number"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/edit_cardview_edittext_background"
-                    android:ems="10"
-                    android:gravity="center|center_horizontal|center_vertical"
-                    android:inputType="number"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/textView13"
-                    app:layout_constraintTop_toBottomOf="@+id/textView13"
-                    app:layout_constraintVertical_bias="0.0" />
-
-                <Button
-                    android:id="@+id/btn_cardview_confrim"
-                    android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="Xác nhận"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/et_cardview_number"
-                    app:layout_constraintTop_toBottomOf="@+id/textView13" />
-
-                <TextView
-                    android:id="@+id/textView13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="Đăng kí số lương:"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/tv_cardview_battery_size"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_cardview_battery_size" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Đăng kí số lương:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tv_cardview_battery_size"
+            app:layout_constraintTop_toBottomOf="@+id/tv_cardview_battery_size" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

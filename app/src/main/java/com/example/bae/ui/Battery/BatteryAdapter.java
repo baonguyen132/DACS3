@@ -14,8 +14,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.bae.R;
 import com.example.bae.data.Battery.BatteryData;
-import com.example.bae.data.Cart.CartData;
-import com.example.bae.data.Cart.CartItemData;
+import com.example.bae.data.CartOfUser.CartOfUser;
+import com.example.bae.data.CartOfUser.CartOfUserItem;
 import com.example.bae.data.RequestCustome;
 import com.example.bae.ui.Battery.CardViewBattery.CardViewBatteryFragment;
 
@@ -95,9 +95,9 @@ public class BatteryAdapter extends BaseAdapter {
         viewHolder.confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CartData.putCart(batteryData.getId() , new CartItemData(batteryData , Integer.parseInt(String.valueOf(viewHolder.number.getText()))));
+                CartOfUser.putCart(batteryData.getId() , new CartOfUserItem(batteryData , Integer.parseInt(String.valueOf(viewHolder.number.getText()))));
                 viewHolder.number.setText("");
-                Log.d("IdPin-Quanity" , CartData.getCart().get(batteryData.getId()).getQuantity() + "-" + CartData.getCart().get(batteryData.getId()).getBatteryData().getName_battery()) ;
+                Log.d("IdPin-Quanity" , CartOfUser.getCart().get(batteryData.getId()).getQuantity() + "-" + CartOfUser.getCart().get(batteryData.getId()).getBatteryData().getName_battery()) ;
             }
         });
 
