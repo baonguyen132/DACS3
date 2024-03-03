@@ -7,5 +7,10 @@
 
     <string name="loign_succeful">Đăng nhập thành công</string>
     <string name="loign_fail">Tài khoản này chưa được đăng kí</string>
+    <string name="record">Record</string>
+    <string name="short_view">Short View</string>
+    <string name="more">More</string>
+    <string name="client">Client</string>
+    <string name="history">Lịch sử</string>
 
 </resources>

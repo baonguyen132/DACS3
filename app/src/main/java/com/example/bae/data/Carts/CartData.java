@@ -1,12 +1,24 @@
 package com.example.bae.data.Carts;
 
-public class CartData {
-    private String id , address , token ;
+import java.io.Serializable;
+
+public class CartData implements Serializable {
+    private String id , created_at  , token ;
+
+
     private int total  ;
 
-    public CartData(String id, String address, String token, int total) {
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public CartData(String id, String created_at, String token, int total) {
         this.id = id;
-        this.address = address;
+        this.created_at = created_at;
         this.token = token;
         this.total = total;
     }
@@ -19,20 +31,12 @@ public class CartData {
         this.id = id;
     }
 
-    public String getAddress() {
-        return address;
+    public String getCreated_at() {
+        return created_at;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
     }
 
     public int getTotal() {

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".ui.include.menu.menu_bottom.ItemCart.ItemCartFragment"
+    android:background="@color/background"
 
     >
 

@@ -1,27 +1,26 @@
 package com.example.bae.ui.Cart;
 
+
 import android.content.Context;
-import android.graphics.Bitmap;
+
+import android.content.Intent;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
+
+import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.bae.R;
-import com.example.bae.data.Battery.BatteryData;
+
 import com.example.bae.data.Carts.CartData;
-import com.example.bae.ui.Battery.BatteryAdapter;
-import com.example.bae.ui.Battery.CardViewBattery.CardViewBatteryFragment;
+
 import com.example.bae.ui.Cart.CartItem.CartItemFragment;
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
-import com.journeyapps.barcodescanner.BarcodeEncoder;
+import com.example.bae.ui.Cart.ItemActivity.ItemHistoryActivity;
+
 
 import java.util.ArrayList;
 
@@ -37,12 +36,16 @@ public class CartAdapter extends BaseAdapter {
 
     class ViewHolder{
 
-        private ImageView imageView ;
+        private TextView tvId , tvPoint, tvDate,tvstatus ;
 
+        private FrameLayout layout ;
 
         public ViewHolder (View row) {
 
-            imageView = row.findViewById(R.id.imgsss) ;
+            tvId = row.findViewById(R.id.tv_history_item_id) ;
+            tvPoint = row.findViewById(R.id.tv_history_item_point) ;
+            tvDate =row.findViewById(R.id.tv_history_item_date) ;
+            layout = row.findViewById(R.id.item_history) ;
         }
 
 
@@ -80,22 +83,26 @@ public class CartAdapter extends BaseAdapter {
             viewHolder = (CartAdapter.ViewHolder) view.getTag();
         }
 
+
+
         CartData cartData = cartDatas.get(position) ;
 
-        MultiFormatWriter multiFormatWriter = new MultiFormatWriter() ;
+        viewHolder.tvId.setText(cartData.getId());
+        viewHolder.tvPoint.setText(cartData.getTotal()+"");
 
-        if(!cartData.getToken().equals("NULL")){
-            try {
-                BitMatrix bitMatrix = multiFormatWriter.encode(cartData.getToken() , BarcodeFormat.QR_CODE , 400 , 400);
-                BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-                Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
-                viewHolder.imageView.setImageBitmap(bitmap);
-            } catch (WriterException e) {
-                throw new RuntimeException(e);
+        String[] date = cartData.getCreated_at().split("T");
+        viewHolder.tvDate.setText(date[0]);
+
+        viewHolder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context , ItemHistoryActivity.class) ;
+                intent.putExtra("data" , cartData);
+                context.startActivity(intent);
             }
+        });
 
-
-        }
 
         return view;
     }

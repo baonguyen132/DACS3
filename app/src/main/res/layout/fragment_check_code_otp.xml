@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.Login_SignUp.CheckCodeOTP.CheckCodeOtpFragment"
     android:id="@+id/fragment_check_code_otp"
+    android:background="@color/background"
     >
 
 

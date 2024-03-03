@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.Login_SignUp.SignUp.SignUpFragment"
+    android:background="@color/background"
     android:id="@+id/fragment_sign_up">
 
     <androidx.constraintlayout.widget.ConstraintLayout
