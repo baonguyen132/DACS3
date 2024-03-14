@@ -12,5 +12,7 @@
     <string name="more">More</string>
     <string name="client">Client</string>
     <string name="history">Lịch sử</string>
+    <string name="choose_branch">Chọn loại</string>
+    <string name="change_voucher">Đổi mã</string>
 
 </resources>

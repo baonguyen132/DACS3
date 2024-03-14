@@ -53,7 +53,7 @@ public class CartFragment extends Fragment {
                 ArrayList<CartData> cartData = new ArrayList<>() ;
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    cartData.add(new CartData(jsonObject.getString("id"),jsonObject.getString("created_at"), jsonObject.getString("token") ,jsonObject.getInt("total")));
+                    cartData.add(new CartData(jsonObject.getString("id"),jsonObject.getString("created_at"), jsonObject.getString("token") , jsonObject.getString("address") ,jsonObject.getInt("total")));
                 }
 
                 listView.setAdapter(new CartAdapter(getContext() , cartData));

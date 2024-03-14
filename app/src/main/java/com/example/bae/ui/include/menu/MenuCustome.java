@@ -16,9 +16,12 @@ public abstract class MenuCustome {
     public MenuCustome( FragmentManager fragmentManager , UserData user , Activity activity ){
         this.fragmentManager = fragmentManager ;
         this.context = activity.getApplicationContext() ;
+        this.activity = activity ;
         this.user = user ;
     }
 
     public abstract void createView();
     public abstract void action() ;
+
+
 }

@@ -45,6 +45,7 @@
             android:text="Name Battery"
             android:textSize="25sp"
             android:textStyle="bold"
+            android:textColor="@color/primary_text"
             app:layout_constraintEnd_toStartOf="@+id/view2"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,6 +58,7 @@
             android:layout_marginTop="12dp"
             android:text="Shape: "
             android:textSize="16sp"
+            android:textColor="@color/primary_text"
             app:layout_constraintStart_toStartOf="@+id/tv_cardview_battery_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_cardview_battery_name" />
 
@@ -66,6 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
+            android:textColor="@color/primary_text"
             android:text="Point:"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/tv_cardview_battery_size"
@@ -78,6 +81,7 @@
             android:layout_marginTop="12dp"
             android:text="Size:"
             android:textSize="16sp"
+            android:textColor="@color/primary_text"
             app:layout_constraintStart_toStartOf="@+id/tv_cardview_battery_shape"
             app:layout_constraintTop_toBottomOf="@+id/tv_cardview_battery_shape" />
 
@@ -115,6 +119,7 @@
             android:layout_marginTop="12dp"
             android:text="Đăng kí số lương:"
             android:textSize="16sp"
+            android:textColor="@color/primary_text"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/tv_cardview_battery_size"
             app:layout_constraintTop_toBottomOf="@+id/tv_cardview_battery_size" />

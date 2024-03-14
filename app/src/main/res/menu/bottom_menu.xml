@@ -20,8 +20,8 @@
         android:icon="@drawable/ic_baseline_subscriptions_24"
         android:title="History" />
     <item
-        android:id="@+id/library"
-        android:title="Library"
-        android:icon="@drawable/ic_baseline_video_library_24" />
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_baseline_video_library_24"
+        android:title="Hồ sơ" />
 
 </menu>

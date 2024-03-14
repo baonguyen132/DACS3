@@ -1,4 +1,4 @@
-package com.example.bae.ui.Battery.CardViewBattery;
+package com.example.bae.ui.Voucher.ItemChooseBranch;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -14,24 +14,24 @@ import android.view.ViewGroup;
 
 import com.example.bae.R;
 
-public class CardViewBatteryFragment extends Fragment {
+public class ItemChooseBranchFragment extends Fragment {
 
-    private CardViewBatteryViewModel mViewModel;
+    private ItemChooseBranchViewModel mViewModel;
 
-    public static CardViewBatteryFragment newInstance() {
-        return new CardViewBatteryFragment();
+    public static ItemChooseBranchFragment newInstance() {
+        return new ItemChooseBranchFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_item_card_view_battery, container, false);
+        return inflater.inflate(R.layout.fragment_item_choose_branch, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(CardViewBatteryViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(ItemChooseBranchViewModel.class);
         // TODO: Use the ViewModel
     }
 

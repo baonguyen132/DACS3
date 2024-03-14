@@ -2,6 +2,7 @@ package com.example.bae.ui.include.menu.menu_bottom;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
@@ -21,12 +22,15 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.bae.Interface.replaceFragement;
+import com.example.bae.MainActivity;
 import com.example.bae.R;
 import com.example.bae.data.CartOfUser.CartOfUser;
 import com.example.bae.data.CartOfUser.CartOfUserItem;
 import com.example.bae.data.User.UserData;
 import com.example.bae.ui.Battery.BatteryFragment;
 import com.example.bae.ui.Cart.CartFragment;
+import com.example.bae.ui.Login_SignUp.LoginActivity;
+import com.example.bae.ui.Profile.ProfileActivity;
 import com.example.bae.ui.home.HomeFragment;
 import com.example.bae.ui.include.menu.MenuCustome;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -83,6 +87,10 @@ public class MenuBottom extends MenuCustome implements replaceFragement {
                     else {
                         replaceFragement(new CartFragment() , fragmentManager);
                     }
+                }
+                else if(id == R.id.profile){
+                    activity.finish();
+                    activity.startActivity(new Intent(context, ProfileActivity.class));
                 }
 
 

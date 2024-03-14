@@ -3,7 +3,7 @@ package com.example.bae.data.Carts;
 import java.io.Serializable;
 
 public class CartData implements Serializable {
-    private String id , created_at  , token ;
+    private String id , created_at  , token , address;
 
 
     private int total  ;
@@ -16,10 +16,11 @@ public class CartData implements Serializable {
         this.token = token;
     }
 
-    public CartData(String id, String created_at, String token, int total) {
+    public CartData(String id, String created_at, String token, String address, int total) {
         this.id = id;
         this.created_at = created_at;
         this.token = token;
+        this.address = address;
         this.total = total;
     }
 
@@ -45,5 +46,13 @@ public class CartData implements Serializable {
 
     public void setTotal(int total) {
         this.total = total;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
