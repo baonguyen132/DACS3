@@ -21,11 +21,17 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ui.Voucher.ChangeVoucherActivity"
-            android:exported="false"
-            android:theme="@style/Theme.BAE.NoActionBar"/>
+            android:name=".ui.Voucher.VoucherOfUser.VoucherOfUserActivity"
+            android:exported="false" />
         <activity
-            android:name=".ui.Voucher.ChooseBranchActivity"
+            android:name=".ui.CheckCodeOTP.CheckCodeOPTActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.Voucher.ChangeVoucher.ChangeVoucherActivity"
+            android:exported="false"
+            android:theme="@style/Theme.BAE.NoActionBar" />
+        <activity
+            android:name=".ui.Voucher.ChooseBranch.ChooseBranchActivity"
             android:exported="false"
             android:theme="@style/Theme.BAE.NoActionBar" />
         <activity

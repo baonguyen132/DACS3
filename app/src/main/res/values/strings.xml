@@ -14,5 +14,12 @@
     <string name="history">Lịch sử</string>
     <string name="choose_branch">Chọn loại</string>
     <string name="change_voucher">Đổi mã</string>
-
+    <string name="figerAuthen_sucessful">Vân tay hợp lệ</string>
+    <string name="figerAuthen_not_sucessful">Vân tay không hợp lệ</string>
+    <string name="total">Tổng số</string>
+    <string name="confirmed">Đã xác nhận</string>
+    <string name="not_confirm">Chưa xác nhận</string>
+    <string name="total_voucher">Tổng\nvoucher</string>
+    <string name="remaining">Còn lại</string>
+    <string name="changed">Đã đổi</string>
 </resources>

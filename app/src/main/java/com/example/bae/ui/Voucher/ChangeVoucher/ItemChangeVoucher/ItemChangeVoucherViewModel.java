@@ -1,4 +1,4 @@
-package com.example.bae.ui.Voucher.ItemChangeVoucher;
+package com.example.bae.ui.Voucher.ChangeVoucher.ItemChangeVoucher;
 
 import androidx.lifecycle.ViewModel;
 

@@ -1,4 +1,4 @@
-package com.example.bae.ui.Voucher.ItemChangeVoucher;
+package com.example.bae.ui.Voucher.ChooseBranch.ItemChooseBranch;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -14,24 +14,24 @@ import android.view.ViewGroup;
 
 import com.example.bae.R;
 
-public class ItemChangeVoucherFragment extends Fragment {
+public class ItemChooseBranchFragment extends Fragment {
 
-    private ItemChangeVoucherViewModel mViewModel;
+    private ItemChooseBranchViewModel mViewModel;
 
-    public static ItemChangeVoucherFragment newInstance() {
-        return new ItemChangeVoucherFragment();
+    public static ItemChooseBranchFragment newInstance() {
+        return new ItemChooseBranchFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_item_change_voucher, container, false);
+        return inflater.inflate(R.layout.fragment_item_choose_branch, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ItemChangeVoucherViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(ItemChooseBranchViewModel.class);
         // TODO: Use the ViewModel
     }
 

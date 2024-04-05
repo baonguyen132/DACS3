@@ -1,26 +1,20 @@
-package com.example.bae.ui.Voucher;
+package com.example.bae.ui.Voucher.ChooseBranch;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.bae.R;
-import com.example.bae.data.Battery.BatteryData;
-import com.example.bae.data.CartOfUser.CartOfUser;
-import com.example.bae.data.CartOfUser.CartOfUserItem;
 import com.example.bae.data.RequestCustome;
 import com.example.bae.data.Voucher_Branchs.Voucher_BranchData;
-import com.example.bae.ui.Battery.CardViewBattery.CardViewBatteryFragment;
-import com.example.bae.ui.Voucher.ItemChooseBranch.ItemChooseBranchFragment;
+import com.example.bae.ui.Voucher.ChangeVoucher.ChangeVoucherActivity;
+import com.example.bae.ui.Voucher.ChooseBranch.ItemChooseBranch.ItemChooseBranchFragment;
 
 import java.util.ArrayList;
 

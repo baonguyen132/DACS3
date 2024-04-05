@@ -1,4 +1,4 @@
-package com.example.bae.ui.Voucher.ItemChooseBranch;
+package com.example.bae.ui.Voucher.ChooseBranch.ItemChooseBranch;
 
 import androidx.lifecycle.ViewModel;
 

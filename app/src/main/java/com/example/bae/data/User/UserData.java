@@ -1,13 +1,18 @@
 package com.example.bae.data.User;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 
 import com.example.bae.data.RequestCustome;
+import com.example.bae.data.Voucher.VoucherData;
+import com.google.gson.Gson;
 import com.journeyapps.barcodescanner.CaptureActivity;
 import com.journeyapps.barcodescanner.ScanOptions;
+
+import org.json.JSONException;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -115,9 +120,6 @@ public class UserData  implements Serializable {
     }
 
     public void sendOtp(String codeOtp , Context context){
-
-
-
         RequestCustome.RequestData("auth/sendOtp", new RequestCustome.HandleRequest() {
             @Override
             public void hanldeRequest(String respone) {
@@ -142,5 +144,24 @@ public class UserData  implements Serializable {
         options.setCaptureActivity(CaptureActivity.class);
 
         barLauncher.launch(options);
+    }
+    public void changeVoucher(VoucherData voucherData , UserData.HandleRequest handle){
+
+        RequestCustome.RequestData("voucherapi/change", new RequestCustome.HandleRequest() {
+            @Override
+            public void hanldeRequest(String respone) throws JSONException {
+                handle.handle(respone);
+            }
+        }, new RequestCustome.setParams() {
+            @Override
+            public void setParams(Map<String, String> params) {
+                params.put("iduser" , getId());
+                params.put("idvoucher" , voucherData.getId());
+            }
+        });
+    }
+
+    public interface HandleRequest{
+        void handle(String respone) ;
     }
 }

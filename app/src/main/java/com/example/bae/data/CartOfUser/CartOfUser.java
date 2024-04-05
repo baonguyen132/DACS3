@@ -77,13 +77,17 @@ public class CartOfUser {
         return CartOfUser.getInstance().cart ;
     }
 
+    public static void removeCart(){
+        DataLocalManager.removeCartOfUser();
+        CartOfUser.init();
+    }
+
     public static void confirmCart(String address , UserData userData){
         CartOfUserRequest cartOfUserRequest = new CartOfUserRequest() ;
         cartOfUserRequest.ResquestCartData(new RequestCustome.HandleRequest() {
             @Override
             public void hanldeRequest(String respone) throws JSONException {
-                DataLocalManager.removeCart();
-                CartOfUser.init();
+                CartOfUser.removeCart();
                 if(!respone.equals("NotSuccessful")){
                     Toast.makeText(RequestCustome.getContext() , "Thêm giỏ hàng thành công" , Toast.LENGTH_LONG).show();
                 }

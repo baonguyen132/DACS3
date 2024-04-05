@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Voucher.ChooseBranchActivity"
+    tools:context=".ui.Voucher.ChooseBranch.ChooseBranchActivity"
     android:background="@color/background">
 
     <FrameLayout
@@ -118,11 +118,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_4sdp"
-                            android:text="@string/client"
+                            android:text="@string/total"
                             android:textColor="@color/secondary_text"
                             android:textSize="@dimen/_10ssp" />
 
                         <TextView
+                            android:id="@+id/total_branch"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="395"
@@ -152,14 +153,18 @@
                             app:tint="@color/main_color" />
 
                         <TextView
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_4sdp"
-                            android:text="@string/client"
+                            android:gravity="center"
+                            android:text="@string/total_voucher"
+
                             android:textColor="@color/secondary_text"
                             android:textSize="@dimen/_10ssp" />
 
                         <TextView
+                            android:id="@+id/total_voucher"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="395"
@@ -191,11 +196,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_4sdp"
-                            android:text="@string/client"
+                            android:text="@string/remaining"
                             android:textColor="@color/secondary_text"
                             android:textSize="@dimen/_10ssp" />
 
                         <TextView
+                            android:id="@+id/remaining"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="395"

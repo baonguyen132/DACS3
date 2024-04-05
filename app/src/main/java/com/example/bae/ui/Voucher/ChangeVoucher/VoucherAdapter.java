@@ -1,7 +1,6 @@
-package com.example.bae.ui.Voucher;
+package com.example.bae.ui.Voucher.ChangeVoucher;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +12,7 @@ import com.bumptech.glide.Glide;
 import com.example.bae.R;
 import com.example.bae.data.RequestCustome;
 import com.example.bae.data.Voucher.VoucherData;
-import com.example.bae.data.Voucher_Branchs.Voucher_BranchData;
-import com.example.bae.ui.Voucher.ItemChangeVoucher.ItemChangeVoucherFragment;
-import com.example.bae.ui.Voucher.ItemChooseBranch.ItemChooseBranchFragment;
+import com.example.bae.ui.Voucher.ChangeVoucher.ItemChangeVoucher.ItemChangeVoucherFragment;
 
 import java.util.ArrayList;
 
@@ -23,9 +20,12 @@ public class VoucherAdapter extends BaseAdapter {
     ArrayList<VoucherData> voucherDataArrayList ;
     Context context ;
 
-    public VoucherAdapter(Context context , ArrayList<VoucherData> voucherDataArrayList) {
+    HanldeConfirm hanldeConfirm ;
+
+    public VoucherAdapter(Context context , ArrayList<VoucherData> voucherDataArrayList , HanldeConfirm hanldeConfirm ) {
         this.voucherDataArrayList = voucherDataArrayList ;
         this.context = context ;
+        this.hanldeConfirm = hanldeConfirm ;
     }
 
     class ViewHolder{
@@ -33,11 +33,13 @@ public class VoucherAdapter extends BaseAdapter {
         TextView name_voucher, tv_point_voucher ;
         ImageView image_voucher ;
 
+        View change_voucher ;
 
         public ViewHolder (View row) {
             name_voucher = row.findViewById(R.id.name_voucher);
             tv_point_voucher = row.findViewById(R.id.tv_point_voucher);
             image_voucher = row.findViewById(R.id.image_voucher);
+            change_voucher = row.findViewById(R.id.change_voucher);
         }
 
 
@@ -80,12 +82,22 @@ public class VoucherAdapter extends BaseAdapter {
         viewHolder.name_voucher.setText(voucherData.getName_voucher());
         viewHolder.tv_point_voucher.setText(voucherData.getPoint());
 
-        String img = RequestCustome.getInstance().getUrlStorage()+"image/Branch/"+voucherData.getId_branch_voucher()+".jpg";
+        String img = RequestCustome.getInstance().getUrlStorage()+"image/Branch/"+voucherData.getId_branch()+".jpg";
         Glide.with(view.getContext()).load(img).into(viewHolder.image_voucher);
 
 
+        viewHolder.change_voucher.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hanldeConfirm.hanldeConfirm(voucherData) ;
+            }
+        });
 
 
         return view;
+    }
+
+    interface HanldeConfirm{
+        void hanldeConfirm(VoucherData voucherBranchData);
     }
 }

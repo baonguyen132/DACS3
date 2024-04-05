@@ -15,9 +15,11 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.bae.MainActivity;
 import com.example.bae.R;
+import com.example.bae.data.CartOfUser.CartOfUser;
 import com.example.bae.data.RequestCustome;
 import com.example.bae.data.SharedPreferences.DataLocalManager;
 import com.example.bae.data.User.UserData;
+import com.example.bae.data.Voucher.VoucherOfUser;
 import com.example.bae.ui.Login_SignUp.LoginActivity;
 import com.example.bae.ui.Login_SignUp.SignUpActivity;
 
@@ -53,6 +55,8 @@ public class ProfileActivity extends AppCompatActivity {
             logout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    VoucherOfUser.removeVoucherOfUser();
+                    CartOfUser.removeCart();
                     DataLocalManager.removeUser();
                     finish();
                     startActivity(new Intent(ProfileActivity.this, LoginActivity.class));

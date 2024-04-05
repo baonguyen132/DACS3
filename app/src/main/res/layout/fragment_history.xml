@@ -86,13 +86,13 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <LinearLayout
-                    android:id="@+id/layoutClients"
+                    android:id="@+id/layoutTotal"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:gravity="center"
-                    app:layout_constraintEnd_toStartOf="@id/layoutClients1"
+                    app:layout_constraintEnd_toStartOf="@id/layoutConfirmed"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/te1"
                     >
@@ -100,17 +100,18 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="@dimen/_28sdp"
                         android:layout_height="@dimen/_28sdp"
-                        android:src="@drawable/outline_photo_camera_24"
+                        android:src="@drawable/baseline_history_24"
                         app:tint="@color/main_color" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_4sdp"
-                        android:text="@string/client"
+                        android:text="@string/total"
                         android:textColor="@color/secondary_text"
                         android:textSize="@dimen/_10ssp" />
                     <TextView
+                        android:id="@+id/total_history"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="395"
@@ -122,33 +123,35 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/layoutClients1"
+                    android:id="@+id/layoutConfirmed"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="50dp"
                     android:layout_marginTop="8dp"
                     android:gravity="center"
                     android:orientation="vertical"
-                    app:layout_constraintEnd_toStartOf="@id/layoutClients2"
+                    app:layout_constraintEnd_toStartOf="@id/layoutNotConfirm"
 
-                    app:layout_constraintStart_toEndOf="@id/layoutClients"
+                    app:layout_constraintStart_toEndOf="@id/layoutTotal"
                     app:layout_constraintTop_toBottomOf="@id/te1">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="@dimen/_28sdp"
+                        android:layout_width="34dp"
                         android:layout_height="@dimen/_28sdp"
-                        android:src="@drawable/outline_photo_camera_24"
+                        android:src="@drawable/baseline_shopping_cart_24"
                         app:tint="@color/main_color" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_4sdp"
-                        android:text="@string/client"
+                        android:text="@string/confirmed"
                         android:textColor="@color/secondary_text"
+                        android:textAlignment="center"
                         android:textSize="@dimen/_10ssp" />
 
                     <TextView
+                        android:id="@+id/confirmed"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="395"
@@ -159,7 +162,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/layoutClients2"
+                    android:id="@+id/layoutNotConfirm"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="50dp"
@@ -167,7 +170,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/layoutClients1"
+                    app:layout_constraintStart_toEndOf="@id/layoutConfirmed"
                     app:layout_constraintTop_toBottomOf="@id/te1">
 
                     <androidx.appcompat.widget.AppCompatImageView
@@ -180,11 +183,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_4sdp"
-                        android:text="@string/client"
+                        android:text="@string/not_confirm"
                         android:textColor="@color/secondary_text"
+                        android:textAlignment="center"
                         android:textSize="@dimen/_10ssp" />
 
                     <TextView
+                        android:id="@+id/not_confirm"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="395"

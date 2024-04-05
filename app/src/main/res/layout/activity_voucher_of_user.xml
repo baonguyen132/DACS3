@@ -30,13 +30,13 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textTitle_change"
+                android:id="@+id/textTitle_of_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_16sdp"
                 android:layout_marginLeft="@dimen/_16sdp"
                 android:layout_marginTop="@dimen/_16sdp"
-                android:text="@string/change_voucher"
+                android:text="Voucher của bạn"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_20ssp"
                 android:textStyle="bold"
@@ -44,13 +44,13 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/finish_change"
+                android:id="@+id/finish_of_user"
                 android:layout_width="@dimen/_26sdp"
                 android:layout_height="@dimen/_26sdp"
                 android:layout_marginEnd="@dimen/_16sdp"
                 android:src="@drawable/baseline_keyboard_arrow_left_24"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textTitle_change"
+                app:layout_constraintTop_toTopOf="@+id/textTitle_of_user"
                 app:tint="@color/white" />
 
             <com.google.android.material.card.MaterialCardView
@@ -76,7 +76,7 @@
                     >
 
                     <TextView
-                        android:id="@+id/te1_change"
+                        android:id="@+id/te1_of_user"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/short_view"
@@ -87,7 +87,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/te2_change"
+                        android:id="@+id/te2_of_user"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/more"
@@ -98,15 +98,15 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <LinearLayout
-                        android:id="@+id/layoutClients_change"
+                        android:id="@+id/layoutClients_of_user"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginTop="@dimen/_8sdp"
                         android:gravity="center"
                         android:orientation="vertical"
-                        app:layout_constraintEnd_toStartOf="@id/layoutClients1_change"
+                        app:layout_constraintEnd_toStartOf="@id/layoutClients1_of_user"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/te1_change">
+                        app:layout_constraintTop_toBottomOf="@id/te1_of_user">
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="@dimen/_28sdp"
@@ -118,12 +118,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_4sdp"
-                            android:text="@string/total"
+                            android:text="@string/client"
                             android:textColor="@color/secondary_text"
                             android:textSize="@dimen/_10ssp" />
 
                         <TextView
-                            android:id="@+id/total_voucher"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="395"
@@ -134,17 +133,17 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/layoutClients1_change"
+                        android:id="@+id/layoutClients1_of_user"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="50dp"
                         android:layout_marginTop="8dp"
                         android:gravity="center"
                         android:orientation="vertical"
-                        app:layout_constraintEnd_toStartOf="@id/layoutClients2_change"
+                        app:layout_constraintEnd_toStartOf="@id/layoutClients2_of_user"
 
-                        app:layout_constraintStart_toEndOf="@id/layoutClients_change"
-                        app:layout_constraintTop_toBottomOf="@id/te1_change">
+                        app:layout_constraintStart_toEndOf="@id/layoutClients_of_user"
+                        app:layout_constraintTop_toBottomOf="@id/te1_of_user">
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="@dimen/_28sdp"
@@ -156,12 +155,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_4sdp"
-                            android:text="@string/remaining"
+                            android:text="@string/client"
                             android:textColor="@color/secondary_text"
                             android:textSize="@dimen/_10ssp" />
 
                         <TextView
-                            android:id="@+id/remaining"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="395"
@@ -172,7 +170,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/layoutClients2_change"
+                        android:id="@+id/layoutClients2_of_user"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="50dp"
@@ -180,8 +178,8 @@
                         android:gravity="center"
                         android:orientation="vertical"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/layoutClients1_change"
-                        app:layout_constraintTop_toBottomOf="@id/te1_change">
+                        app:layout_constraintStart_toEndOf="@id/layoutClients1_of_user"
+                        app:layout_constraintTop_toBottomOf="@id/te1_of_user">
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="@dimen/_28sdp"
@@ -190,16 +188,14 @@
                             app:tint="@color/main_color" />
 
                         <TextView
-
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_4sdp"
-                            android:text="@string/changed"
+                            android:text="@string/client"
                             android:textColor="@color/secondary_text"
                             android:textSize="@dimen/_10ssp" />
 
                         <TextView
-                            android:id="@+id/changed"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="395"
@@ -225,7 +221,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/cardHeader">
 
                 <ListView
-                    android:id="@+id/listVoucher"
+                    android:id="@+id/listVoucherOfUser"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:layout_constraintBottom_toBottomOf="parent"

@@ -25,8 +25,8 @@ import java.util.Map;
 public class RequestCustome  {
     private Context context ;
     private static RequestCustome requestCustome ;
-//    protected String url = "http://192.168.1.101/APIDACS3/public/api/" ;
-    private static String link = "https:///d48d-2405-4802-6099-9830-4c74-45db-578f-e412.ngrok-free.app/DACS2/public/" ;
+//    protected String link = "http://10.50.26.254/APIDACS3/public/" ;
+    private static String link = "https:///2acc-14-176-232-239.ngrok-free.app/DACS2/public/" ;
     protected  String urlAPI = link+"api/" ;
     protected  String urlStorage = link+"storage/" ;
 
@@ -110,15 +110,12 @@ public class RequestCustome  {
     public void setUrlAPI(String urlAPI) {
         RequestCustome.getInstance().urlAPI = urlAPI;
     }
-
-    public String getUrlStorage() {
-        return RequestCustome.getInstance().urlStorage;
-    }
-
     public void setUrlStorage(String urlStorage) {
         RequestCustome.getInstance().urlStorage = urlStorage;
     }
-
+    public String getUrlStorage() {
+        return RequestCustome.getInstance().urlStorage;
+    }
     public interface HandleResponeJSON{
         void handleResponeJSON(JSONObject response) throws JSONException;
     }

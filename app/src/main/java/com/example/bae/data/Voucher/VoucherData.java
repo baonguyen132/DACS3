@@ -1,14 +1,18 @@
 package com.example.bae.data.Voucher;
 
-public class VoucherData {
-    private String id,name_voucher, code_voucher, point , id_branch_voucher ;
+import com.example.bae.data.Voucher_Branchs.Voucher_BranchData;
 
-    public VoucherData(String id, String name_voucher, String code_voucher, String point, String id_branch_voucher) {
+import java.io.Serializable;
+
+public class VoucherData implements Serializable {
+    private String id,name_voucher, code_voucher, point , id_branch  ;
+
+    public VoucherData(String id, String name_voucher, String code_voucher, String point, String id_branch) {
         this.id = id;
         this.name_voucher = name_voucher;
         this.code_voucher = code_voucher;
         this.point = point;
-        this.id_branch_voucher = id_branch_voucher;
+        this.id_branch = id_branch;
     }
 
     public String getId() {
@@ -43,11 +47,10 @@ public class VoucherData {
         this.point = point;
     }
 
-    public String getId_branch_voucher() {
-        return id_branch_voucher;
+    public String getId_branch() {
+        return id_branch;
     }
-
-    public void setId_branch_voucher(String id_branch_voucher) {
-        this.id_branch_voucher = id_branch_voucher;
+    public void setId_branch(String id_branch) {
+        this.id_branch = id_branch;
     }
 }
