@@ -1,4 +1,4 @@
-package com.example.bae.data.CartOfUser;
+package com.example.bae.data.CartNotConfirm;
 
 import com.example.bae.data.RequestCustome;
 import com.example.bae.data.User.UserData;
@@ -9,16 +9,16 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class CartOfUserRequest {
-    public CartOfUserRequest() {
+public class CartNotConfirmRequest {
+    public CartNotConfirmRequest() {
     }
 
     public void ResquestCartData(RequestCustome.HandleRequest handleRequest , String address , UserData userData){
 
-        ArrayList<CartOfUserItem> cartOfUserItemData = new ArrayList<CartOfUserItem>(CartOfUser.getCart().values());
+        ArrayList<CartNotConfirmItem> cartNotConfirmItemData = new ArrayList<CartNotConfirmItem>(CartNotConfirm.getCart().values());
 
         Gson gson = new Gson() ;
-        String dataCart = gson.toJson(cartOfUserItemData);
+        String dataCart = gson.toJson(cartNotConfirmItemData);
         String dataUser = gson.toJson(userData) ;
 
         double randomDouble = Math.random();

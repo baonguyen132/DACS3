@@ -12,4 +12,5 @@ public class BatteryRequest  {
     public void getDataFromServe(RequestCustome.HandleResponeJSON handle){
         RequestCustome.ResponseData("batteryapi", handle);
     }
+
 }

@@ -16,5 +16,15 @@ public class CartRequest {
     public void getCount(String id , RequestCustome.HandleResponeJSON handleResponeJSON){
         RequestCustome.ResponseData("cartapi/getnumber/iduser="+id , handleResponeJSON);
     }
+    public void getAllNotConfirm(RequestCustome.HandleResponeJSON handleResponeJSON){
+        RequestCustome.ResponseData("cartapi/getAll" , handleResponeJSON);
+    }
+    public void getInformation(String id , RequestCustome.HandleResponeJSON handleResponeJSON){
+        RequestCustome.ResponseData("cartapi/getItem/idcart="+id , handleResponeJSON);
+    }
+
+    public void confirmCartAddPoint(RequestCustome.HandleRequest handle , RequestCustome.setParams setParams){
+        RequestCustome.RequestData("cartapi/confirmbyadmin" , handle , setParams);
+    }
 
 }

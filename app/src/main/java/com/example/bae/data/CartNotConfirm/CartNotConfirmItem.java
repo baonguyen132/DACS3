@@ -1,13 +1,13 @@
-package com.example.bae.data.CartOfUser;
+package com.example.bae.data.CartNotConfirm;
 
 import com.example.bae.data.Battery.BatteryData;
 
-public class CartOfUserItem {
+public class CartNotConfirmItem {
 
     private BatteryData batteryData ;
     private int quantity ;
 
-    public CartOfUserItem(BatteryData batteryData, int quantity) {
+    public CartNotConfirmItem(BatteryData batteryData, int quantity) {
         this.batteryData = batteryData;
         this.quantity = quantity;
     }

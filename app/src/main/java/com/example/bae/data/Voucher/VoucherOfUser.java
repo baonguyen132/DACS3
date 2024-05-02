@@ -1,9 +1,5 @@
 package com.example.bae.data.Voucher;
 
-import android.util.Log;
-
-import com.example.bae.data.CartOfUser.CartOfUser;
-import com.example.bae.data.CartOfUser.CartOfUserItem;
 import com.example.bae.data.SharedPreferences.DataLocalManager;
 
 import java.util.HashMap;
@@ -27,9 +23,25 @@ public class VoucherOfUser {
         return instance ;
     }
 
-    public static void putVoucher(VoucherData voucherData){
+    public static void putItemVoucher(VoucherData voucherData){
         VoucherOfUser.getInstance().listvoucherOfUser.put(voucherData.getId() , voucherData);
         DataLocalManager.setVoucherOfUser(VoucherOfUser.getInstance());
+    }
+
+    public static boolean removeItemVoucher(String idKey){
+        try {
+            VoucherOfUser.getInstance().listvoucherOfUser.remove(idKey) ;
+            DataLocalManager.setVoucherOfUser(VoucherOfUser.getInstance());
+            return true ;
+        }
+        catch (Exception e){
+            return false ;
+        }
+    }
+
+    public static void removeVoucherOfUser(){
+        DataLocalManager.removeVoucherOfUser();
+        VoucherOfUser.init();
     }
 
     public static void setListvoucherOfUser(HashMap<String, VoucherData> listvoucherOfUser) {
@@ -40,15 +52,4 @@ public class VoucherOfUser {
     public static HashMap<String, VoucherData> getVoucherOfUser() {
         return VoucherOfUser.getInstance().listvoucherOfUser;
     }
-
-    public static void removeItem(String idKey){
-        VoucherOfUser.getInstance().listvoucherOfUser.remove(idKey) ;
-        VoucherOfUser.init();
-    }
-
-    public static void removeVoucherOfUser(){
-        DataLocalManager.removeVoucherOfUser();
-        VoucherOfUser.getInstance().listvoucherOfUser = null ;
-    }
-
 }

@@ -1,4 +1,4 @@
-package com.example.bae.ui.Cart.ItemActivity;
+package com.example.bae.ui.Cart;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,9 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -18,6 +16,7 @@ import com.example.bae.data.Carts.CartData;
 import com.example.bae.data.Details.DetailData;
 import com.example.bae.data.Details.DetailRequest;
 import com.example.bae.data.RequestCustome;
+import com.example.bae.ui.ItemBatteryOfCart.ItemBatteryCartAdapter;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;

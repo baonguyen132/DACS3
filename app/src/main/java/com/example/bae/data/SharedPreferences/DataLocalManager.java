@@ -3,8 +3,9 @@ package com.example.bae.data.SharedPreferences;
 import android.content.Context;
 
 
-import com.example.bae.data.CartOfUser.CartOfUser;
+import com.example.bae.data.CartNotConfirm.CartNotConfirm;
 
+import com.example.bae.data.Carts.CartOfUser;
 import com.example.bae.data.User.UserData;
 
 import com.example.bae.data.Voucher.VoucherOfUser;
@@ -20,6 +21,7 @@ public class DataLocalManager {
     private static final String PREF_OBJECT_USER = "PREF_OBJECT_USER";
     private static final String PREF_HASHMAP_CART = "PREF_HASHMAP_CART";
     private static final String PREF_HASHMAP_VOUCHEROFUSER = "PREF_HASHMAP_VOUCHEROFUSER";
+    private static final String PREF_HASHMAP_CARTOFUSER = "PREF_HASHMAP_CARTOFUSER";
     private static  DataLocalManager instance ;
     private  MySharedPreferences sharedPreferences ;
     public static void init(Context context){
@@ -65,20 +67,20 @@ public class DataLocalManager {
         Gson gson = new Gson() ;
         return gson.fromJson(strJsonUser , UserData.class);
     }
-    public static void setCart(CartOfUser carts){
+    public static void setCart(CartNotConfirm carts){
         Gson gson = new Gson() ;
         String strJsonUser = gson.toJson(carts);
         DataLocalManager.getInstance().sharedPreferences.putStringValue(PREF_HASHMAP_CART , strJsonUser);
     }
 
-    public static CartOfUser getCart(){
+    public static CartNotConfirm getCart(){
         String strJsonUser = DataLocalManager.getInstance().sharedPreferences.getStringValue(PREF_HASHMAP_CART) ;
         Gson gson = new Gson() ;
 
-        return gson.fromJson(strJsonUser , CartOfUser.class);
+        return gson.fromJson(strJsonUser , CartNotConfirm.class);
     }
 
-    public static void removeCartOfUser(){
+    public static void removeCartNotConfirm(){
         DataLocalManager.getInstance().sharedPreferences.removeDataValue(PREF_HASHMAP_CART);
     }
 
@@ -92,8 +94,6 @@ public class DataLocalManager {
         String strJsonUser = gson.toJson(voucherOfUser);
         DataLocalManager.getInstance().sharedPreferences.putStringValue(PREF_HASHMAP_VOUCHEROFUSER , strJsonUser);
     }
-
-
     public static VoucherOfUser getVoucherOfUser(){
         String strJsonUser = DataLocalManager.getInstance().sharedPreferences.getStringValue(PREF_HASHMAP_VOUCHEROFUSER) ;
         Gson gson = new Gson() ;
@@ -102,6 +102,21 @@ public class DataLocalManager {
     }
     public static void removeVoucherOfUser(){
         DataLocalManager.getInstance().sharedPreferences.removeDataValue(PREF_HASHMAP_VOUCHEROFUSER);
+    }
+
+    public static void setCartOfUser(CartOfUser cartOfUser){
+        Gson gson = new Gson() ;
+        String stringJSON = gson.toJson(cartOfUser);
+        DataLocalManager.getInstance().sharedPreferences.putStringValue(PREF_HASHMAP_CARTOFUSER , stringJSON);
+    }
+    public static CartOfUser getCartOfUser() {
+        Gson gson = new Gson() ;
+        String stringJson = DataLocalManager.getInstance().sharedPreferences.getStringValue(PREF_HASHMAP_CARTOFUSER);
+
+        return gson.fromJson(stringJson , CartOfUser.class);
+    }
+    public static void removeCartOfUser() {
+        DataLocalManager.getInstance().sharedPreferences.removeDataValue(PREF_HASHMAP_CARTOFUSER);
     }
 
 

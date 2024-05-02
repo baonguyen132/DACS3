@@ -129,7 +129,7 @@ public class ChangeVoucherActivity extends AppCompatActivity implements fingerpr
                                     @Override
                                     public void handle(String respone) {
                                         if(respone.equals("sucessful")){
-                                            VoucherOfUser.putVoucher(voucherData);
+                                            VoucherOfUser.putItemVoucher(voucherData);
                                             finish();
                                             Toast.makeText(getApplicationContext() , "Đã đổi voucher" , Toast.LENGTH_LONG ).show();
                                         }

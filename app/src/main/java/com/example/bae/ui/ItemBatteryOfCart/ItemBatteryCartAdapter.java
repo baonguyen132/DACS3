@@ -1,27 +1,18 @@
-package com.example.bae.ui.Cart.ItemActivity;
+package com.example.bae.ui.ItemBatteryOfCart;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.bae.R;
-import com.example.bae.data.Battery.BatteryData;
-import com.example.bae.data.CartOfUser.CartOfUser;
-import com.example.bae.data.CartOfUser.CartOfUserItem;
 import com.example.bae.data.Details.DetailData;
 import com.example.bae.data.RequestCustome;
-import com.example.bae.ui.Battery.CardViewBattery.CardViewBatteryFragment;
-import com.example.bae.ui.Cart.ItemActivity.ItemBatteryCart.ItemBatteryCartFragment;
-import com.example.bae.ui.include.menu.menu_bottom.ItemCart.ItemCartFragment;
-import com.example.bae.ui.include.menu.menu_bottom.ItemCartAdapter;
+import com.example.bae.ui.ItemBatteryOfCart.ItemBatteryCart.ItemBatteryCartFragment;
 
 import java.util.ArrayList;
 

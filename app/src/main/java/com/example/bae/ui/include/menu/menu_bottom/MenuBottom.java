@@ -22,14 +22,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.bae.Interface.replaceFragement;
-import com.example.bae.MainActivity;
 import com.example.bae.R;
-import com.example.bae.data.CartOfUser.CartOfUser;
-import com.example.bae.data.CartOfUser.CartOfUserItem;
+import com.example.bae.data.CartNotConfirm.CartNotConfirm;
+import com.example.bae.data.CartNotConfirm.CartNotConfirmItem;
 import com.example.bae.data.User.UserData;
 import com.example.bae.ui.Battery.BatteryFragment;
 import com.example.bae.ui.Cart.CartFragment;
-import com.example.bae.ui.Login_SignUp.LoginActivity;
 import com.example.bae.ui.Profile.ProfileActivity;
 import com.example.bae.ui.home.HomeFragment;
 import com.example.bae.ui.include.menu.MenuCustome;
@@ -43,7 +41,7 @@ public class MenuBottom extends MenuCustome implements replaceFragement {
 
     private FloatingActionButton fab ;
     private BottomNavigationView bottomNavigationView ;
-    private ArrayList<CartOfUserItem> cartOfUserItemData;
+    private ArrayList<CartNotConfirmItem> cartNotConfirmItemData;
 
 
     public MenuBottom (FragmentManager fragmentManager , Activity activity , UserData user ){
@@ -61,8 +59,8 @@ public class MenuBottom extends MenuCustome implements replaceFragement {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cartOfUserItemData = new ArrayList<>(CartOfUser.getCart().values());
-                if(cartOfUserItemData.size() == 0){
+                cartNotConfirmItemData = new ArrayList<>(CartNotConfirm.getCart().values());
+                if(cartNotConfirmItemData.size() == 0){
                     Toast.makeText(context , "Giỏ hàng đang trống" , Toast.LENGTH_LONG).show();
                 }
                 else {
@@ -163,15 +161,15 @@ public class MenuBottom extends MenuCustome implements replaceFragement {
         TextView tvtotalQuanity = dialog.findViewById(R.id.tv_dialog_cart_confirm_total_quantity);
         EditText edaddress = dialog.findViewById(R.id.et_dialog_cart_address);
 
-        listView.setAdapter(new ItemCartConfirmAdapter(context , cartOfUserItemData));
+        listView.setAdapter(new ItemCartConfirmAdapter(context , cartNotConfirmItemData));
 
 
 
 
         int totalPoint = 0 , totalQuanity = 0 ;
-        for (int i = 0; i < cartOfUserItemData.size(); i++) {
-            totalPoint = totalPoint + cartOfUserItemData.get(i).getQuantity()* cartOfUserItemData.get(i).getBatteryData().getPoint() ;
-            totalQuanity = totalQuanity + cartOfUserItemData.get(i).getQuantity() ;
+        for (int i = 0; i < cartNotConfirmItemData.size(); i++) {
+            totalPoint = totalPoint + cartNotConfirmItemData.get(i).getQuantity()* cartNotConfirmItemData.get(i).getBatteryData().getPoint() ;
+            totalQuanity = totalQuanity + cartNotConfirmItemData.get(i).getQuantity() ;
         }
 
         tvtotalPoint.setText(totalPoint+"");
@@ -182,14 +180,13 @@ public class MenuBottom extends MenuCustome implements replaceFragement {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CartOfUser.confirmCart(String.valueOf(edaddress.getText()) , user );
+                CartNotConfirm.confirmCart(String.valueOf(edaddress.getText()) , user );
                 dialog.dismiss();
             }
         });
 
         dialog.show();
     }
-
 
 
 

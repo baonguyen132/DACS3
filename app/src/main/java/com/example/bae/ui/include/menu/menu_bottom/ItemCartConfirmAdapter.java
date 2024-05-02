@@ -8,17 +8,17 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.bae.R;
-import com.example.bae.data.CartOfUser.CartOfUserItem;
+import com.example.bae.data.CartNotConfirm.CartNotConfirmItem;
 import com.example.bae.ui.include.menu.menu_bottom.ItemCartConfirm.ItemCartConfirmragment;
 
 import java.util.ArrayList;
 
 public class ItemCartConfirmAdapter extends BaseAdapter {
-    private ArrayList<CartOfUserItem> cartOfUserItemData;
+    private ArrayList<CartNotConfirmItem> cartNotConfirmItemData;
     private Context context ;
-    public ItemCartConfirmAdapter(Context context , ArrayList<CartOfUserItem> cartOfUserItemData) {
+    public ItemCartConfirmAdapter(Context context , ArrayList<CartNotConfirmItem> cartNotConfirmItemData) {
         this.context = context;
-        this.cartOfUserItemData = cartOfUserItemData;
+        this.cartNotConfirmItemData = cartNotConfirmItemData;
     }
 
     class ViewHolder{
@@ -38,12 +38,12 @@ public class ItemCartConfirmAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return cartOfUserItemData.size();
+        return cartNotConfirmItemData.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return cartOfUserItemData.get(position);
+        return cartNotConfirmItemData.get(position);
     }
 
     @Override
@@ -67,19 +67,19 @@ public class ItemCartConfirmAdapter extends BaseAdapter {
             viewHolder = (ItemCartConfirmAdapter.ViewHolder) view.getTag();
         }
 
-        CartOfUserItem cartOfUserItem = (CartOfUserItem) getItem(position);
+        CartNotConfirmItem cartNotConfirmItem = (CartNotConfirmItem) getItem(position);
 
-        viewHolder.name_battery.setText(cartOfUserItem.getBatteryData().getName_battery());
-        viewHolder.point.setText(cartOfUserItem.getBatteryData().getPoint()+"");
+        viewHolder.name_battery.setText(cartNotConfirmItem.getBatteryData().getName_battery());
+        viewHolder.point.setText(cartNotConfirmItem.getBatteryData().getPoint()+"");
 
-        totalPoint(viewHolder , cartOfUserItem) ;
+        totalPoint(viewHolder , cartNotConfirmItem) ;
 
 
         return view;
     }
-    private void totalPoint(ItemCartConfirmAdapter.ViewHolder viewHolder , CartOfUserItem cartOfUserItem){
-        int total = cartOfUserItem.getBatteryData().getPoint() * cartOfUserItem.getQuantity() ;
+    private void totalPoint(ItemCartConfirmAdapter.ViewHolder viewHolder , CartNotConfirmItem cartNotConfirmItem){
+        int total = cartNotConfirmItem.getBatteryData().getPoint() * cartNotConfirmItem.getQuantity() ;
         viewHolder.total_point.setText(total+"");
-        viewHolder.quantity.setText(cartOfUserItem.getQuantity()+"");
+        viewHolder.quantity.setText(cartNotConfirmItem.getQuantity()+"");
     }
 }

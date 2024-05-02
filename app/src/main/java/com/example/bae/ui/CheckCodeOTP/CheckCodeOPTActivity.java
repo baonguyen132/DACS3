@@ -67,7 +67,7 @@ public class CheckCodeOPTActivity extends AppCompatActivity {
                             @Override
                             public void handle(String respone) {
                                 if(respone.equals("sucessful")){
-                                    VoucherOfUser.putVoucher(voucherData);
+                                    VoucherOfUser.putItemVoucher(voucherData);
                                     Toast.makeText(getApplicationContext() , "Đã đổi voucher" , Toast.LENGTH_LONG ).show();
                                 }
                                 else if(respone.equals("not_sucessful")){

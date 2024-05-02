@@ -1,5 +1,6 @@
 package com.example.bae.ui.Login_SignUp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -39,7 +40,7 @@ public class LoginActivity extends AppCompatActivity implements fingerprintAuthe
     private EditText email , password ;
     private Button signUp ;
 
-    private UserRequest userRequest ;
+
     private ImageView fingerPrint ;
     private CheckBox checkBox ;
 
@@ -53,7 +54,7 @@ public class LoginActivity extends AppCompatActivity implements fingerprintAuthe
         fingerPrint = findViewById(R.id.iv_login_signIn);
         checkBox = findViewById(R.id.cb_save_account);
 
-        userRequest = new UserRequest();
+
 
         email.setText(DataLocalManager.getUsename());
 
@@ -104,25 +105,26 @@ public class LoginActivity extends AppCompatActivity implements fingerprintAuthe
     private void login(String email , String password){
         LoadingDialog dialog = new LoadingDialog(LoginActivity.this);
         dialog.startAlerDialog();
-        userRequest.checkAccount(email, password, new RequestCustome.HandleResponeString() {
+        UserRequest.checkAccount(email, password, new RequestCustome.HandleResponeString() {
             @Override
             public void handleResponeString(String response) throws JSONException {
+                dialog.dismissDialog();
                 int id = Integer.parseInt(response) ;
                 if(id != 0){
                     saveDataFromServe(id);
-                    dialog.dismissDialog();
                 }
                 else {
-
+                    Toast.makeText(getApplicationContext() , "Sai email hoặc mật khẩu" , Toast.LENGTH_LONG).show();
 
                 }
+
             }
         });
 
     }
 
     private void saveDataFromServe(int id){
-        userRequest.getDataFromServe(id, new RequestCustome.HandleResponeJSON() {
+        UserRequest.getDataFromServe(id, new RequestCustome.HandleResponeJSON() {
             @Override
             public void handleResponeJSON(JSONObject response) throws JSONException {
                 JSONObject jsonObject = response.getJSONObject("data");

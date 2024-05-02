@@ -25,15 +25,11 @@ import java.util.Map;
 public class UserRequest {
 
 
-    public UserRequest() {
-
-    }
-
-    public void getDataFromServe(int id , RequestCustome.HandleResponeJSON handle){
+    public static void getDataFromServe(int id , RequestCustome.HandleResponeJSON handle){
         RequestCustome.ResponseData("auth/id=" +id , handle);
     }
 
-    public void checkAccount(String email, String password , RequestCustome.HandleResponeString handle){
+    public static void checkAccount(String email, String password , RequestCustome.HandleResponeString handle){
         RequestCustome.RequestData("auth/checkUser", new RequestCustome.HandleRequest() {
             @Override
             public void hanldeRequest(String respone) throws JSONException {
@@ -48,6 +44,36 @@ public class UserRequest {
         });
     }
 
+    public static void replaceAddress(UserData userData , RequestCustome.HandleResponeString handle){
+        RequestCustome.RequestData("auth/replace_address", new RequestCustome.HandleRequest() {
+            @Override
+            public void hanldeRequest(String respone) throws JSONException {
+                handle.handleResponeString(respone);
+            }
+        }, new RequestCustome.setParams() {
+            @Override
+            public void setParams(Map<String, String> params) {
+                params.put("id" , userData.getId());
+                params.put("address" , userData.getAddress());
+            }
+        });
+    }
+
+    public static void replacePassword(String id , String oldpassword , String newPassword , RequestCustome.HandleResponeString handle){
+        RequestCustome.RequestData("auth/replace_password", new RequestCustome.HandleRequest() {
+            @Override
+            public void hanldeRequest(String respone) throws JSONException {
+                handle.handleResponeString(respone);
+            }
+        }, new RequestCustome.setParams() {
+            @Override
+            public void setParams(Map<String, String> params) {
+                params.put("id" , id);
+                params.put("oldpassword" , oldpassword);
+                params.put("newpassword" , newPassword);
+            }
+        });
+    }
 
 
 }

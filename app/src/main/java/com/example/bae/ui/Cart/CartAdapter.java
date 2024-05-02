@@ -4,7 +4,6 @@ package com.example.bae.ui.Cart;
 import android.content.Context;
 
 import android.content.Intent;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +11,12 @@ import android.widget.BaseAdapter;
 
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.bae.R;
 
 import com.example.bae.data.Carts.CartData;
 
 import com.example.bae.ui.Cart.CartItem.CartItemFragment;
-import com.example.bae.ui.Cart.ItemActivity.ItemHistoryActivity;
 
 
 import java.util.ArrayList;

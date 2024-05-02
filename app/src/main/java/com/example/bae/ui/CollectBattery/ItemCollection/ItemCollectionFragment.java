@@ -1,4 +1,4 @@
-package com.example.bae.ui.Cart.ItemActivity.ItemBatteryCart;
+package com.example.bae.ui.CollectBattery.ItemCollection;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -14,24 +14,24 @@ import android.view.ViewGroup;
 
 import com.example.bae.R;
 
-public class ItemBatteryCartFragment extends Fragment {
+public class ItemCollectionFragment extends Fragment {
 
-    private ItemBatteryCartViewModel mViewModel;
+    private ItemCollectionViewModel mViewModel;
 
-    public static ItemBatteryCartFragment newInstance() {
-        return new ItemBatteryCartFragment();
+    public static ItemCollectionFragment newInstance() {
+        return new ItemCollectionFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_item_battery_cart, container, false);
+        return inflater.inflate(R.layout.fragment_item_collection, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ItemBatteryCartViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(ItemCollectionViewModel.class);
         // TODO: Use the ViewModel
     }
 

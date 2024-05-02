@@ -25,8 +25,8 @@ import java.util.Map;
 public class RequestCustome  {
     private Context context ;
     private static RequestCustome requestCustome ;
-//    protected String link = "http://10.50.26.254/APIDACS3/public/" ;
-    private static String link = "https:///2acc-14-176-232-239.ngrok-free.app/DACS2/public/" ;
+//    protected String link = "http://10.50.199.164/APIDACS3/public/" ;
+    private static String link = "https://455e-2405-4802-69a8-5960-5c90-3884-816a-a3ce.ngrok-free.app/DACS2/public/" ;
     protected  String urlAPI = link+"api/" ;
     protected  String urlStorage = link+"storage/" ;
 

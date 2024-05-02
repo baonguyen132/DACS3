@@ -116,6 +116,8 @@
                 android:layout_marginStart="@dimen/_32sdp"
                 android:layout_marginEnd="@dimen/_32sdp"
                 android:layout_marginTop="@dimen/_16sdp"
+                android:id="@+id/function1"
+                android:visibility="gone"
 
                 >
 
@@ -146,7 +148,7 @@
                     android:id="@+id/textView25"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Item menu 1"
+                    android:text="Đơn thu gom"
                     android:textStyle="bold"
                     android:textColor="@color/main_color"
                     android:textSize="20sp"
@@ -284,7 +286,8 @@
                 android:layout_marginStart="@dimen/_32sdp"
                 android:layout_marginEnd="@dimen/_32sdp"
                 android:layout_marginTop="@dimen/_16sdp"
-
+                android:id="@+id/information"
+                android:visibility="gone"
                 >
 
 
@@ -314,7 +317,7 @@
                     android:id="@+id/textView253"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Item menu 1"
+                    android:text="Thông  tin"
                     android:textStyle="bold"
                     android:textColor="@color/main_color"
                     android:textSize="20sp"

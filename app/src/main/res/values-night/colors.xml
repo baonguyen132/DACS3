@@ -18,4 +18,7 @@
     <color name="dashboard_item_2">#4DE9C9</color>
     <color name="dashboard_item_3">#72A4FF</color>
     <color name="dashboard_item_4">#1ca586</color>
+
+    <color name="main_color_cardview">#fff</color>
+    <color name="main_color_cardview_text">#1ca586</color>
 </resources>
