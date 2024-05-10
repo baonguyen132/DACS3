@@ -1,12 +1,19 @@
 package com.example.bae.ui.Information;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -23,53 +30,47 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.bae.Interface.hanldeUploadImage;
 import com.example.bae.R;
 import com.example.bae.data.CartNotConfirm.CartNotConfirm;
+import com.example.bae.data.FirebaseCustome;
 import com.example.bae.data.RequestCustome;
 import com.example.bae.data.SharedPreferences.DataLocalManager;
 import com.example.bae.data.User.UserData;
 import com.example.bae.data.User.UserRequest;
 import com.example.bae.ui.Profile.ProfileActivity;
 import com.example.bae.ui.include.menu.menu_bottom.ItemCartConfirmAdapter;
+import com.github.dhaval2404.imagepicker.ImagePicker;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.Calendar;
 
 public class InformationActivity extends AppCompatActivity {
     private EditText selectDay , fullname , cid , address , email;
     private RadioGroup radioGroupGender ;
     private View layout_finsh ;
     private Button replace_address, replace_password ;
+    private ImageView image_avata_information_activity ;
     TextView tvname , tvemail ;
     ImageView avata ;
     UserData userData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information);
+        anhXa() ;
+        userData = DataLocalManager.getUser();
         setUp();
-         userData = DataLocalManager.getUser();
-
-        fullname.setText(userData.getName());
-        cid.setText(userData.getCccd());
-        selectDay.setText(userData.getDob());
-        email.setText(userData.getEmail());
-        address.setText(userData.getAddress());
-
-        String img = RequestCustome.getInstance().getUrlStorage()+"upload/"+userData.getCccd()+"/upload_image_avata.jpg";
-        Glide.with(getApplicationContext()).load(img).apply(new RequestOptions().transform(new CenterCrop()).transform(new RoundedCorners(100))).into(avata);
-
-        tvname.setText(userData.getName());
-        tvemail.setText(userData.getEmail());
-
-
-        if(userData.getGender().equals("Male")){
-            radioGroupGender.check(R.id.r_information_male);
-
-        }
-        else {
-            radioGroupGender.check(R.id.r_information_female);
-
-        }
 
         layout_finsh.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,10 +91,81 @@ public class InformationActivity extends AppCompatActivity {
                 openDialogReplacePassword();
             }
         });
+        image_avata_information_activity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImagePicker.with(InformationActivity.this)
+                        .crop()
+                        .compress(1024)
+                        .maxResultSize(1080, 1080)
+                        .start() ;
 
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        if (resultCode == Activity.RESULT_OK) {
+            Uri uri = data.getData() ;
+            Bitmap bitmap = null;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),uri);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            image_avata_information_activity.setImageBitmap(bitmap);
+
+            hanldeUploadImage.handle(bitmap, "avatar", userData.getCccd(), new hanldeUploadImage() {
+                @Override
+                public void success() {
+                    Toast.makeText(getApplicationContext() , "Thành công" , Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void fail() {
+                    Toast.makeText(getApplicationContext() , "Không thành công" , Toast.LENGTH_LONG).show();
+                }
+            });
+
+
+        } else if (resultCode == ImagePicker.RESULT_ERROR) {
+            Toast.makeText(this, ImagePicker.getError(data), Toast.LENGTH_SHORT).show() ;
+        } else {
+            Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private void setUp(){
+        fullname.setText(userData.getName());
+        cid.setText(userData.getCccd());
+        selectDay.setText(userData.getDob());
+        email.setText(userData.getEmail());
+        address.setText(userData.getAddress());
+
+        String img = FirebaseCustome.getInstance().getUrlFirebaseStorage() +userData.getCccd()+"%2Favatar.png?alt=media";
+        Picasso.with(getApplicationContext()).load(img).into(avata);
+
+        tvname.setText(userData.getName());
+        tvemail.setText(userData.getEmail());
+
+        if(userData.getGender().equals("Male")){
+            radioGroupGender.check(R.id.r_information_male);
+
+        }
+        else {
+            radioGroupGender.check(R.id.r_information_female);
+
+        }
+    }
+
+    private void anhXa(){
         selectDay = findViewById(R.id.et_information_dob) ;
         fullname = findViewById(R.id.et_information_fullname);
         cid = findViewById(R.id.et_information_cid);
@@ -106,6 +178,7 @@ public class InformationActivity extends AppCompatActivity {
         tvname = findViewById(R.id.tv_name_activity_information);
         tvemail = findViewById(R.id.tv_email_activity_information);
         avata = findViewById(R.id.image_avata_information_activity);
+        image_avata_information_activity = findViewById(R.id.image_avata_information_activity);
 
         setEdittextReadOnly(selectDay);
         setEdittextReadOnly(fullname);

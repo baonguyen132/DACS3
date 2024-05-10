@@ -26,7 +26,9 @@ import com.example.bae.data.Carts.CartRequest;
 import com.example.bae.data.Details.DetailData;
 import com.example.bae.data.Details.DetailRequest;
 import com.example.bae.data.RequestCustome;
+import com.example.bae.ui.Cart.ItemHistoryActivity;
 import com.example.bae.ui.CollectBattery.CollectBatteryActivity;
+import com.example.bae.ui.Image.ImageActivity;
 import com.example.bae.ui.ItemBatteryOfCart.ItemBatteryCartAdapter;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -48,7 +50,7 @@ public class ScanQRCodeColloectActivity extends AppCompatActivity {
     private TextView name , cccd , pointofuser , pointofcart ;
     private ImageView close ;
     private ListView listView ;
-    private Button openScan, openMap ;
+    private Button openScan, openMap, seenimage ;
     private CartData cartData ;
     private CartRequest cartRequest ;
 
@@ -100,6 +102,16 @@ public class ScanQRCodeColloectActivity extends AppCompatActivity {
                 back();
             }
         });
+        seenimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(ScanQRCodeColloectActivity.this , ImageActivity.class);
+                String cccds = (String) cccd.getText();
+                intent1.putExtra("data" , cccds+"%2F"+cartData.getNamefile());
+                intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent1);
+            }
+        });
         openScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,6 +137,7 @@ public class ScanQRCodeColloectActivity extends AppCompatActivity {
         listView = findViewById(R.id.listCollect);
         openScan = findViewById(R.id.openScan);
         openMap = findViewById(R.id.openMap);
+        seenimage = findViewById(R.id.seenimage);
     }
     private void back(){
         Intent intent = new Intent(ScanQRCodeColloectActivity.this , CollectBatteryActivity.class);

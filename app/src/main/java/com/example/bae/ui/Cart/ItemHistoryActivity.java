@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -16,6 +17,9 @@ import com.example.bae.data.Carts.CartData;
 import com.example.bae.data.Details.DetailData;
 import com.example.bae.data.Details.DetailRequest;
 import com.example.bae.data.RequestCustome;
+import com.example.bae.data.SharedPreferences.DataLocalManager;
+import com.example.bae.data.User.UserData;
+import com.example.bae.ui.Image.ImageActivity;
 import com.example.bae.ui.ItemBatteryOfCart.ItemBatteryCartAdapter;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -33,6 +37,7 @@ public class ItemHistoryActivity extends AppCompatActivity {
     ImageView QR_code ;
     View finish_detail ;
     ListView listView ;
+    Button button ;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +61,22 @@ public class ItemHistoryActivity extends AppCompatActivity {
             } catch (WriterException e) {
                 throw new RuntimeException(e);
             }
+
+
         }
+        if(cartData.getNamefile().equals("NULL")){
+            button.setVisibility(View.GONE);
+        }
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(ItemHistoryActivity.this , ImageActivity.class);
+                UserData userData = DataLocalManager.getUser() ;
+                intent1.putExtra("data" , userData.getCccd()+"%2F"+cartData.getNamefile());
+                intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent1);
+            }
+        });
 
 
 
@@ -89,5 +109,6 @@ public class ItemHistoryActivity extends AppCompatActivity {
         QR_code = findViewById(R.id.qrcodes);
         finish_detail = findViewById(R.id.finish_detail);
         listView = findViewById(R.id.listview_item_cart_battery_activity_item_history);
+        button = findViewById(R.id.openimage);
     }
 }

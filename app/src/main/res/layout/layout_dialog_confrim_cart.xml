@@ -141,6 +141,16 @@
                         android:textSize="16sp"
                         app:layout_constraintStart_toEndOf="@+id/textView12"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/addImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Thêm ảnh"
+                        android:textSize="@dimen/_8ssp"
+                        app:layout_constraintBottom_toTopOf="@+id/et_dialog_cart_address"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </FrameLayout>

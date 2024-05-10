@@ -3,8 +3,11 @@ package com.example.bae.ui.include.menu.menu_bottom;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,23 +22,30 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.bae.Interface.hanldeUploadImage;
 import com.example.bae.Interface.replaceFragement;
 import com.example.bae.R;
 import com.example.bae.data.CartNotConfirm.CartNotConfirm;
 import com.example.bae.data.CartNotConfirm.CartNotConfirmItem;
+import com.example.bae.data.SharedPreferences.DataLocalManager;
 import com.example.bae.data.User.UserData;
 import com.example.bae.ui.Battery.BatteryFragment;
 import com.example.bae.ui.Cart.CartFragment;
+import com.example.bae.ui.Information.InformationActivity;
 import com.example.bae.ui.Profile.ProfileActivity;
 import com.example.bae.ui.home.HomeFragment;
 import com.example.bae.ui.include.menu.MenuCustome;
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MenuBottom extends MenuCustome implements replaceFragement {
 
@@ -43,6 +53,9 @@ public class MenuBottom extends MenuCustome implements replaceFragement {
     private BottomNavigationView bottomNavigationView ;
     private ArrayList<CartNotConfirmItem> cartNotConfirmItemData;
 
+    private String namefile = "" ;
+    private Bitmap bitmap ;
+    private UserData userData ;
 
     public MenuBottom (FragmentManager fragmentManager , Activity activity , UserData user ){
         super(fragmentManager , user, activity);
@@ -52,6 +65,7 @@ public class MenuBottom extends MenuCustome implements replaceFragement {
 
     @Override
     public void createView() {
+        userData = DataLocalManager.getUser() ;
         bottomNavigationView.setBackground(null);
     }
 
@@ -160,6 +174,7 @@ public class MenuBottom extends MenuCustome implements replaceFragement {
         TextView tvtotalPoint = dialog.findViewById(R.id.tv_dialog_cart_confirm_total_point);
         TextView tvtotalQuanity = dialog.findViewById(R.id.tv_dialog_cart_confirm_total_quantity);
         EditText edaddress = dialog.findViewById(R.id.et_dialog_cart_address);
+        Button addimage = dialog.findViewById(R.id.addImage);
 
         listView.setAdapter(new ItemCartConfirmAdapter(context , cartNotConfirmItemData));
 
@@ -180,13 +195,52 @@ public class MenuBottom extends MenuCustome implements replaceFragement {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CartNotConfirm.confirmCart(String.valueOf(edaddress.getText()) , user );
-                dialog.dismiss();
+                if(!namefile.equals("")){
+                    CartNotConfirm.confirmCart(String.valueOf(edaddress.getText()) , user , namefile );
+                    hanldeUploadImage.handle(bitmap, namefile, userData.getCccd(), new hanldeUploadImage() {
+                        @Override
+                        public void success() {
+                            Toast.makeText(activity.getApplicationContext() , "Thành công" , Toast.LENGTH_LONG).show();
+                        }
+
+                        @Override
+                        public void fail() {
+                            Toast.makeText(activity.getApplicationContext() , "Không thành công" , Toast.LENGTH_LONG).show();
+                        }
+                    });
+                    dialog.dismiss();
+                }
+                else {
+                    Toast.makeText(activity.getApplicationContext() , "Chưa bổ xung ảnh" , Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+        addimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                activity.startActivityForResult(intent , 1);
             }
         });
 
+
         dialog.show();
     }
+
+
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == 1 && resultCode == Activity.RESULT_OK && data!=null ){
+            bitmap = (Bitmap) data.getExtras().get("data");
+            Calendar calendar = Calendar.getInstance() ;
+            namefile = userData.getCccd()+"="+calendar.getTimeInMillis()+"="+"cart" ;
+
+        }
+
+    }
+
+
 
 
 

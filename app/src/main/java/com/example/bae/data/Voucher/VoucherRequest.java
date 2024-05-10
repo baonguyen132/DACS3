@@ -32,6 +32,7 @@ public class VoucherRequest {
             public void setParams(Map<String, String> params) {
                 params.put("idClient" , DataLocalManager.getUser().getId());
                 params.put("idVoucher" , voucherData.getId());
+
             }
         });
     }

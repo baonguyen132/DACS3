@@ -9,6 +9,9 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
 
     <application
         android:name=".data.MyApplication"
@@ -22,6 +25,9 @@
         android:theme="@style/Theme.BAE"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.Image.ImageActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.Information.InformationActivity"
             android:exported="false" />

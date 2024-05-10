@@ -23,6 +23,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.bae.R;
+import com.example.bae.data.FirebaseCustome;
 import com.example.bae.data.RequestCustome;
 import com.example.bae.data.SharedPreferences.DataLocalManager;
 import com.example.bae.data.User.UserData;
@@ -30,6 +31,7 @@ import com.example.bae.ui.Voucher.ChooseBranch.ChooseBranchActivity;
 import com.example.bae.ui.Voucher.VoucherOfUser.VoucherOfUserActivity;
 import com.example.bae.ui.home.Adapter.DevelopmentAdapter;
 import com.example.bae.ui.home.Adapter.DevelopmentData;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -84,8 +86,8 @@ public class HomeFragment extends Fragment  {
         if(userData != null){
             String[] arrayName = userData.getName().split(" ");
             textHi.setText("Hi, "+arrayName[arrayName.length - 1]);
-            String img = RequestCustome.getInstance().getUrlStorage()+"upload/"+userData.getCccd()+"/upload_image_avata.jpg";
-            Glide.with(getContext()).load(img).apply(new RequestOptions().transform(new CenterCrop()).transform(new RoundedCorners(50))).into(imageView);
+            String img = FirebaseCustome.getInstance().getUrlFirebaseStorage() +userData.getCccd()+"%2Favatar.png?alt=media";
+            Picasso.with(getContext()).load(img).into(imageView);
         }
 
 

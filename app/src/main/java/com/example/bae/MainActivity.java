@@ -1,14 +1,22 @@
 package com.example.bae;
 
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.widget.Toast;
 
 
+import com.example.bae.Interface.hanldeUploadImage;
 import com.example.bae.Interface.replaceFragement;
 
 
@@ -18,13 +26,17 @@ import com.example.bae.ui.home.HomeFragment;
 
 import com.example.bae.ui.include.menu.MenuCustome;
 import com.example.bae.ui.include.menu.menu_bottom.MenuBottom;
+import com.github.dhaval2404.imagepicker.ImagePicker;
+
+import java.io.IOException;
+import java.util.Calendar;
 
 
 public class MainActivity extends AppCompatActivity implements replaceFragement {
 
 
 
-    private MenuCustome menuBottom ;
+    private MenuBottom menuBottom ;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -33,8 +45,6 @@ public class MainActivity extends AppCompatActivity implements replaceFragement 
         setContentView(R.layout.activity_main);
 
         UserData user = DataLocalManager.getUser() ;
-
-
 
         //==== Thiết lập biến ====//
 
@@ -49,4 +59,10 @@ public class MainActivity extends AppCompatActivity implements replaceFragement 
     }
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        menuBottom.onActivityResult(requestCode , resultCode , data) ;
+
+    }
 }

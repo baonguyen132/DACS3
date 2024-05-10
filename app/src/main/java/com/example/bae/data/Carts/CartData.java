@@ -8,20 +8,15 @@ public class CartData implements Serializable {
 
     private int total  ;
 
-    public String getToken() {
-        return token;
-    }
+    private String namefile ;
 
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public CartData(String id, String created_at, String token, String address, int total) {
+    public CartData(String id, String created_at, String token, String address, int total, String namefile) {
         this.id = id;
         this.created_at = created_at;
         this.token = token;
         this.address = address;
         this.total = total;
+        this.namefile = namefile;
     }
 
     public String getId() {
@@ -40,12 +35,12 @@ public class CartData implements Serializable {
         this.created_at = created_at;
     }
 
-    public int getTotal() {
-        return total;
+    public String getToken() {
+        return token;
     }
 
-    public void setTotal(int total) {
-        this.total = total;
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getAddress() {
@@ -54,5 +49,21 @@ public class CartData implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public String getNamefile() {
+        return namefile;
+    }
+
+    public void setNamefile(String namefile) {
+        this.namefile = namefile;
     }
 }

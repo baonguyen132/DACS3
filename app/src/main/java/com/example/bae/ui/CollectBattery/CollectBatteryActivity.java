@@ -37,7 +37,7 @@ public class CollectBatteryActivity extends AppCompatActivity {
                 JSONArray jsonArray = response.getJSONArray("data");
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    CartData cartDataItem = new CartData(jsonObject.getString("id") , jsonObject.getString("created_at") , jsonObject.getString("token") , jsonObject.getString("address") , Integer.parseInt(jsonObject.getString("total")));
+                    CartData cartDataItem = new CartData(jsonObject.getString("id") , jsonObject.getString("created_at") , jsonObject.getString("token") , jsonObject.getString("address") , Integer.parseInt(jsonObject.getString("total")) , jsonObject.getString("image"));
                     cartData.add(cartDataItem);
                 }
 

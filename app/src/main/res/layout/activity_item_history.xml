@@ -81,6 +81,14 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <Button
+        android:id="@+id/openimage"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="@dimen/_20ssp"
+
+        android:layout_height="wrap_content"
+        android:text="Mởa hình ảnh" />
+
     <ListView
         android:id="@+id/listview_item_cart_battery_activity_item_history"
         android:layout_width="match_parent"

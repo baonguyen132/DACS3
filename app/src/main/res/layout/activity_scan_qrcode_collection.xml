@@ -219,18 +219,26 @@
               android:id="@+id/openScan"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:text="Scan QR Code"
+              android:text="Quét"
               android:layout_marginStart="@dimen/_16ssp"
 
               />
+
+        <Button
+            android:id="@+id/seenimage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Xem ảnh"
+            android:layout_marginHorizontal="14dp"/>
 
         <Button
             android:id="@+id/openMap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Open Map"
-            android:layout_marginHorizontal="@dimen/_16ssp"/>
+            android:text="Mở Map"
+            android:layout_marginRight="@dimen/_16ssp"/>
 
       </LinearLayout>
     </FrameLayout>

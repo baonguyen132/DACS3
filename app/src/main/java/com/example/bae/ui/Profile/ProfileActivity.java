@@ -17,6 +17,7 @@ import com.example.bae.MainActivity;
 import com.example.bae.R;
 import com.example.bae.data.CartNotConfirm.CartNotConfirm;
 import com.example.bae.data.Carts.CartOfUser;
+import com.example.bae.data.FirebaseCustome;
 import com.example.bae.data.RequestCustome;
 import com.example.bae.data.SharedPreferences.DataLocalManager;
 import com.example.bae.data.User.UserData;
@@ -25,6 +26,7 @@ import com.example.bae.ui.CollectBattery.CollectBatteryActivity;
 import com.example.bae.ui.Information.InformationActivity;
 import com.example.bae.ui.Login_SignUp.LoginActivity;
 import com.example.bae.ui.Login_SignUp.SignUpActivity;
+import com.squareup.picasso.Picasso;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -48,8 +50,8 @@ public class ProfileActivity extends AppCompatActivity {
                 function1.setVisibility(View.VISIBLE);
             }
 
-            String img = RequestCustome.getInstance().getUrlStorage()+"upload/"+userData.getCccd()+"/upload_image_avata.jpg";
-            Glide.with(getApplicationContext()).load(img).apply(new RequestOptions().transform(new CenterCrop()).transform(new RoundedCorners(100))).into(avata);
+            String img = FirebaseCustome.getInstance().getUrlFirebaseStorage() +userData.getCccd()+"%2Favatar.png?alt=media";
+            Picasso.with(getApplicationContext()).load(img).into(avata);
 
             name.setText(userData.getName());
             email.setText(userData.getEmail());

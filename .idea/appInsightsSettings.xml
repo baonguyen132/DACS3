@@ -10,9 +10,9 @@
               <option name="connection">
                 <ConnectionSetting>
                   <option name="appId" value="com.example.bae" />
-                  <option name="mobileSdkAppId" value="1:496017160108:android:10f0c0e8721f8bcc496c09" />
-                  <option name="projectId" value="baebase-f1bb1" />
-                  <option name="projectNumber" value="496017160108" />
+                  <option name="mobileSdkAppId" value="1:1029033749690:android:8c7bde8aeea2e9c511a683" />
+                  <option name="projectId" value="baebase-15fff" />
+                  <option name="projectNumber" value="1029033749690" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

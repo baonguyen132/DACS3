@@ -13,7 +13,7 @@ public class CartNotConfirmRequest {
     public CartNotConfirmRequest() {
     }
 
-    public void ResquestCartData(RequestCustome.HandleRequest handleRequest , String address , UserData userData){
+    public void ResquestCartData(RequestCustome.HandleRequest handleRequest , String address , String namefile ,UserData userData){
 
         ArrayList<CartNotConfirmItem> cartNotConfirmItemData = new ArrayList<CartNotConfirmItem>(CartNotConfirm.getCart().values());
 
@@ -33,6 +33,7 @@ public class CartNotConfirmRequest {
                 params.put("address" , address) ;
                 params.put("user" , dataUser);
                 params.put("token" , token) ;
+                params.put("namefile" , namefile);
 
 
             }
@@ -48,6 +49,7 @@ public class CartNotConfirmRequest {
                 params.put("address" , address) ;
                 params.put("user" , dataUser);
                 params.put("token" , token) ;
+
             }
         });
 

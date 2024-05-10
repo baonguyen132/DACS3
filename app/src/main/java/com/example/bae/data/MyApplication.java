@@ -17,6 +17,6 @@ public class MyApplication extends Application {
         VoucherOfUser.init();
         CartOfUser.init();
         RequestCustome.init(getApplicationContext());
-
+        FirebaseCustome.init(getApplicationContext());
     }
 }

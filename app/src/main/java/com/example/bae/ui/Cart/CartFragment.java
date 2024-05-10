@@ -154,7 +154,7 @@ public class CartFragment extends Fragment {
         HashMap<String , CartData> cartData = new HashMap<>() ;
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
-            cartData.put(jsonObject.getString("id") , new CartData(jsonObject.getString("id"),jsonObject.getString("created_at"), jsonObject.getString("token") , jsonObject.getString("address") ,jsonObject.getInt("total")));
+            cartData.put(jsonObject.getString("id") , new CartData(jsonObject.getString("id"),jsonObject.getString("created_at"), jsonObject.getString("token") , jsonObject.getString("address") ,jsonObject.getInt("total"), jsonObject.getString("image") ));
         }
         CartOfUser.setStringCartDataHashMap(cartData);
         ArrayList<CartData> cartDatas = new ArrayList<>(cartData.values());

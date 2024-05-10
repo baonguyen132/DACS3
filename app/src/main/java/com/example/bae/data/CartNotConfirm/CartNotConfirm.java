@@ -84,7 +84,7 @@ public class CartNotConfirm {
         CartNotConfirm.init();
     }
 
-    public static void confirmCart(String address , UserData userData){
+    public static void confirmCart(String address , UserData userData , String namefile){
         CartNotConfirmRequest cartNotConfirmRequest = new CartNotConfirmRequest() ;
         cartNotConfirmRequest.ResquestCartData(new RequestCustome.HandleRequest() {
             @Override
@@ -94,12 +94,12 @@ public class CartNotConfirm {
                     Toast.makeText(RequestCustome.getContext() , "Thêm giỏ hàng thành công" , Toast.LENGTH_LONG).show();
 
                     String[] result = respone.split("@");
-                    CartOfUser.putItemCart(new CartData(result[0] , result[3] , result[1] , address ,Integer.parseInt(result[2]) ));
+                    CartOfUser.putItemCart(new CartData(result[0] , result[3] , result[1] , address ,Integer.parseInt(result[2]) , result[4] ));
 
                 }
                 Log.d("Result" , respone) ;
             }
-        } , address , userData);
+        } , address , namefile , userData);
     }
 
 
