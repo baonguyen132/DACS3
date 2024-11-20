@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.bae.R;
+import com.example.bae.data.AI.RequestDataAI;
+import com.example.bae.data.CartNotConfirm.CartNotConfirm;
 import com.example.bae.data.FirebaseCustome;
 import com.example.bae.data.SharedPreferences.DataLocalManager;
 import com.example.bae.data.User.UserData;
@@ -30,7 +32,7 @@ public class ImageActivity extends AppCompatActivity {
         String file = intent.getStringExtra("data");
 
 
-        String img = FirebaseCustome.getInstance().getUrlFirebaseStorage()+file+".png?alt=media";
+        String img = RequestDataAI.getLinkAI()+"/show_image?image_name="+file+".jpg";
         Picasso.with(getApplicationContext()).load(img).into(imageView);
 
         button.setOnClickListener(new View.OnClickListener() {

@@ -2,6 +2,7 @@ package com.example.bae.data;
 
 import android.app.Application;
 
+import com.example.bae.data.AI.RequestDataAI;
 import com.example.bae.data.CartNotConfirm.CartNotConfirm;
 import com.example.bae.data.Carts.CartOfUser;
 import com.example.bae.data.SharedPreferences.DataLocalManager;
@@ -16,7 +17,10 @@ public class MyApplication extends Application {
         CartNotConfirm.init();
         VoucherOfUser.init();
         CartOfUser.init();
+
         RequestCustome.init(getApplicationContext());
+        RequestDataAI.init(getApplicationContext());
+
         FirebaseCustome.init(getApplicationContext());
     }
 }

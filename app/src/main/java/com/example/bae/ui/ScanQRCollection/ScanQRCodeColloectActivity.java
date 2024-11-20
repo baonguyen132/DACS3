@@ -107,7 +107,7 @@ public class ScanQRCodeColloectActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent1 = new Intent(ScanQRCodeColloectActivity.this , ImageActivity.class);
                 String cccds = (String) cccd.getText();
-                intent1.putExtra("data" , cccds+"%2F"+cartData.getNamefile());
+                intent1.putExtra("data" , cartData.getNamefile());
                 intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent1);
             }

@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -28,6 +30,7 @@ import androidx.fragment.app.FragmentManager;
 import com.example.bae.Interface.hanldeUploadImage;
 import com.example.bae.Interface.replaceFragement;
 import com.example.bae.R;
+import com.example.bae.data.AI.RequestDataAI;
 import com.example.bae.data.CartNotConfirm.CartNotConfirm;
 import com.example.bae.data.CartNotConfirm.CartNotConfirmItem;
 import com.example.bae.data.SharedPreferences.DataLocalManager;
@@ -44,17 +47,17 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.Calendar;
+
 
 public class MenuBottom extends MenuCustome implements replaceFragement {
 
     private FloatingActionButton fab ;
     private BottomNavigationView bottomNavigationView ;
     private ArrayList<CartNotConfirmItem> cartNotConfirmItemData;
-
-    private String namefile = "" ;
-    private Bitmap bitmap ;
     private UserData userData ;
 
     public MenuBottom (FragmentManager fragmentManager , Activity activity , UserData user ){
@@ -174,8 +177,6 @@ public class MenuBottom extends MenuCustome implements replaceFragement {
         TextView tvtotalPoint = dialog.findViewById(R.id.tv_dialog_cart_confirm_total_point);
         TextView tvtotalQuanity = dialog.findViewById(R.id.tv_dialog_cart_confirm_total_quantity);
         EditText edaddress = dialog.findViewById(R.id.et_dialog_cart_address);
-        Button addimage = dialog.findViewById(R.id.addImage);
-
         listView.setAdapter(new ItemCartConfirmAdapter(context , cartNotConfirmItemData));
 
 
@@ -195,19 +196,8 @@ public class MenuBottom extends MenuCustome implements replaceFragement {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!namefile.equals("")){
-                    CartNotConfirm.confirmCart(String.valueOf(edaddress.getText()) , user , namefile );
-                    hanldeUploadImage.handle(bitmap, namefile, userData.getCccd(), new hanldeUploadImage() {
-                        @Override
-                        public void success() {
-                            Toast.makeText(activity.getApplicationContext() , "Thành công" , Toast.LENGTH_LONG).show();
-                        }
-
-                        @Override
-                        public void fail() {
-                            Toast.makeText(activity.getApplicationContext() , "Không thành công" , Toast.LENGTH_LONG).show();
-                        }
-                    });
+                if(!CartNotConfirm.getNamefile().equals("")){
+                    CartNotConfirm.confirmCart(String.valueOf(edaddress.getText()) , user , CartNotConfirm.getNamefile() );
                     dialog.dismiss();
                 }
                 else {
@@ -216,29 +206,12 @@ public class MenuBottom extends MenuCustome implements replaceFragement {
 
             }
         });
-        addimage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                activity.startActivityForResult(intent , 1);
-            }
-        });
-
-
         dialog.show();
     }
 
 
 
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == 1 && resultCode == Activity.RESULT_OK && data!=null ){
-            bitmap = (Bitmap) data.getExtras().get("data");
-            Calendar calendar = Calendar.getInstance() ;
-            namefile = userData.getCccd()+"="+calendar.getTimeInMillis()+"="+"cart" ;
 
-        }
-
-    }
 
 
 

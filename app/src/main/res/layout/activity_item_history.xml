@@ -11,7 +11,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="320dp"
-        android:background="@color/main_color">
+        android:background="@color/main_color"
+        tools:ignore="MissingClass">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -87,7 +88,7 @@
         android:layout_marginHorizontal="@dimen/_20ssp"
 
         android:layout_height="wrap_content"
-        android:text="Mởa hình ảnh" />
+        android:text="Mở hình ảnh" />
 
     <ListView
         android:id="@+id/listview_item_cart_battery_activity_item_history"

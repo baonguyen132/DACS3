@@ -18,6 +18,10 @@ import com.example.bae.data.CartNotConfirm.CartNotConfirm;
 import com.example.bae.data.CartNotConfirm.CartNotConfirmItem;
 import com.example.bae.data.RequestCustome;
 import com.example.bae.ui.Battery.CardViewBattery.CardViewBatteryFragment;
+import com.google.gson.JsonObject;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -25,16 +29,16 @@ public class BatteryAdapter extends BaseAdapter {
 
     ArrayList<BatteryData> batteryDatas ;
     Context context ;
-
     public BatteryAdapter(Context context , ArrayList<BatteryData> batteryDatas) {
         this.batteryDatas = batteryDatas ;
         this.context = context ;
+
     }
 
     class ViewHolder{
         private TextView name_battery , shape , point , size ;
         private EditText number ;
-        private Button confirm ;
+
         private ImageView imageView ;
 
 
@@ -44,11 +48,12 @@ public class BatteryAdapter extends BaseAdapter {
             point = row.findViewById(R.id.tv_cardview_battery_point);
             size = row.findViewById(R.id.tv_cardview_battery_size);
             number = row.findViewById(R.id.et_cardview_number) ;
-            confirm = row.findViewById(R.id.btn_cardview_confrim);
+
+//            number.setTag(number.getKeyListener());
+//            number.setKeyListener(null);
+
             imageView = row.findViewById(R.id.img_cardview_battery_imageBattery) ;
         }
-
-
     }
 
     @Override
@@ -89,17 +94,18 @@ public class BatteryAdapter extends BaseAdapter {
         viewHolder.point.setText("Point: " + batteryData.getPoint());
         viewHolder.size.setText("Size: "+batteryData.getSize());
 
+        if (CartNotConfirm.getObjectCart() != null) {
+            String[] name_battery = batteryData.getName_battery().split(" ");
+            try {
+                viewHolder.number.setText(CartNotConfirm.getObjectCart().get(name_battery[1]).toString());
+            }
+            catch (Exception e) {
+
+            }
+        }
+
         String img = RequestCustome.getInstance().getUrlStorage()+"image/Battery/"+batteryData.getImage()+".jpg";
         Glide.with(view.getContext()).load(img).into(viewHolder.imageView);
-
-        viewHolder.confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CartNotConfirm.putCart(batteryData.getId() , new CartNotConfirmItem(batteryData , Integer.parseInt(String.valueOf(viewHolder.number.getText()))));
-                viewHolder.number.setText("");
-                Log.d("IdPin-Quanity" , CartNotConfirm.getCart().get(batteryData.getId()).getQuantity() + "-" + CartNotConfirm.getCart().get(batteryData.getId()).getBatteryData().getName_battery()) ;
-            }
-        });
 
         return view;
     }

@@ -71,8 +71,7 @@ public class ItemHistoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(ItemHistoryActivity.this , ImageActivity.class);
-                UserData userData = DataLocalManager.getUser() ;
-                intent1.putExtra("data" , userData.getCccd()+"%2F"+cartData.getNamefile());
+                intent1.putExtra("data" , cartData.getNamefile());
                 intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent1);
             }

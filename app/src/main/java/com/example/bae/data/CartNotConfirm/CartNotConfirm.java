@@ -8,8 +8,10 @@ import com.example.bae.data.Carts.CartOfUser;
 import com.example.bae.data.RequestCustome;
 import com.example.bae.data.SharedPreferences.DataLocalManager;
 import com.example.bae.data.User.UserData;
+import com.google.gson.JsonObject;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 
@@ -18,11 +20,15 @@ public class CartNotConfirm {
 
     private static CartNotConfirm instance ;
     private HashMap<String, CartNotConfirmItem> cart ;
+    private String namefile  ;
+    private JsonObject objectCart ;
     public static void init(){
         instance = DataLocalManager.getCart() ;
         if(instance == null){
             instance = new CartNotConfirm() ;
             instance.cart = new HashMap<String , CartNotConfirmItem>() ;
+            instance.namefile = "" ;
+            instance.objectCart = null ;
         }
 
     }
@@ -34,8 +40,21 @@ public class CartNotConfirm {
         return instance ;
     }
 
+    public static String getNamefile() {
+        return CartNotConfirm.getInstance().namefile;
+    }
 
+    public static void setNamefile(String namefile) {
+        CartNotConfirm.getInstance().namefile = namefile;
+    }
 
+    public static JsonObject getObjectCart() {
+        return CartNotConfirm.getInstance().objectCart;
+    }
+
+    public static void setObjectCart(JsonObject objectCart) {
+        CartNotConfirm.getInstance().objectCart = objectCart;
+    }
 
     public static void putCart(String idKey , CartNotConfirmItem cartNotConfirmItem){
         if (cartNotConfirmItem.getQuantity() <= 0 ){

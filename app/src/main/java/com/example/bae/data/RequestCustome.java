@@ -13,7 +13,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.bae.data.User.UserRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,7 +25,7 @@ public class RequestCustome  {
     private Context context ;
     private static RequestCustome requestCustome ;
 //    protected String link = "http://10.50.199.164/APIDACS3/public/" ;
-    private static String link = "https://0b2b-2405-4802-707d-dc90-8c4-2c78-fdad-62ef.ngrok-free.app/DACS2/public/" ;
+    private static String link = "https://steady-sharply-ibex.ngrok-free.app/DACS2/public/" ;
     protected  String urlAPI = link+"api/" ;
     protected  String urlStorage = link+"storage/" ;
 
@@ -98,15 +97,12 @@ public class RequestCustome  {
     public static void setContext(Context context) {
         RequestCustome.getInstance().context = context ;
     }
-
     public static Context getContext() {
         return RequestCustome.getInstance().context;
     }
-
     public String getUrlAPI() {
         return RequestCustome.getInstance().urlAPI;
     }
-
     public void setUrlAPI(String urlAPI) {
         RequestCustome.getInstance().urlAPI = urlAPI;
     }
@@ -125,7 +121,6 @@ public class RequestCustome  {
     public interface HandleRequest{
         void hanldeRequest(String respone) throws JSONException;
     }
-
     public interface setParams {
         void setParams(Map<String , String> params) ;
     }
