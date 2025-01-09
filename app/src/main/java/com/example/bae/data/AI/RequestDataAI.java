@@ -21,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RequestDataAI {
     private Context context ;
     private static RequestDataAI requestDataAI ;
-    private static String linkAI = "https://6ede-116-105-218-8.ngrok-free.app" ;
+    private static String linkAI = "https://042f-2401-d800-95ae-3cdd-84e6-dc5-b810-ac8f.ngrok-free.app" ;
     public static void init(Context context){
         requestDataAI = new RequestDataAI() ;
         requestDataAI.context = context ;

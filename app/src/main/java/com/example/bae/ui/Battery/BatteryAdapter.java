@@ -49,8 +49,8 @@ public class BatteryAdapter extends BaseAdapter {
             size = row.findViewById(R.id.tv_cardview_battery_size);
             number = row.findViewById(R.id.et_cardview_number) ;
 
-//            number.setTag(number.getKeyListener());
-//            number.setKeyListener(null);
+            number.setTag(number.getKeyListener());
+            number.setKeyListener(null);
 
             imageView = row.findViewById(R.id.img_cardview_battery_imageBattery) ;
         }

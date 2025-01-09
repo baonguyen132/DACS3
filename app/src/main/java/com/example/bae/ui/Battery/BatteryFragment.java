@@ -143,6 +143,7 @@ public class BatteryFragment extends Fragment {
                 @Override
                 public void hanldeResult(JsonObject data) {
                     CartNotConfirm.setObjectCart(data);
+                    Log.d("sssaass" , data.toString()) ;
                     listBattey.setAdapter(new BatteryAdapter(getContext() , batteryData));
                 }
             });
