@@ -25,7 +25,7 @@ public class RequestCustome  {
     private Context context ;
     private static RequestCustome requestCustome ;
 //    protected String link = "http://10.50.199.164/APIDACS3/public/" ;
-    private static String link = "https://d739-2401-d800-95ae-3cdd-84e6-dc5-b810-ac8f.ngrok-free.app/DACS2/public/" ;
+    private static String link = "https://accb-2401-d800-5541-2f45-6871-6742-e61c-2083.ngrok-free.app/DACS2/public/" ;
     protected  String urlAPI = link+"api/" ;
     protected  String urlStorage = link+"storage/" ;
 
